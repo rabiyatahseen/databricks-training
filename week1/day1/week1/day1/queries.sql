@@ -45,24 +45,3 @@ SELECT * FROM Employee WHERE hire_date >= '2021-03-01';
 
 -- 15. Total salary
 SELECT SUM(salary) FROM Employee;
-
--- 16. Average salary
-SELECT AVG(salary) FROM Employee;
-
--- 17. Minimum salary
-SELECT MIN(salary) FROM Employee;
-
--- 18. Number of employees per department
-SELECT department_id, COUNT(*) 
-FROM Employee 
-GROUP BY department_id;
-
--- 19. Average salary per department
-SELECT department_id, AVG(salary) 
-FROM Employee 
-GROUP BY department_id;
-
--- 20. Total salary per department
-SELECT department_id, SUM(salary) 
-FROM Employee 
-GROUP BY department_id;
