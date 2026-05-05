@@ -1,53 +1,24 @@
-# Week 1 - Day 1: SQL Basics Practice
+# Week 1 - SQL Practice
 
 ## 📌 Overview
 
-Today I started learning the basics of SQL as part of the Databricks training program. I practiced writing queries using an online SQL editor.
+This week focuses on learning the basics of SQL as part of the Databricks training.
 
-## 🛠️ Tools Used
+## 🗂️ Structure
 
-* DB Fiddle (https://www.db-fiddle.com/)
-* GitHub for version control
+* Day 1: SQL Basics and Practice
+* Day 2: (To be updated)
 
-## 📚 Topics Covered
+## 🎯 Goal
 
-* SELECT statements
-* Filtering using WHERE clause
-* Column selection
-* Basic conditions (>, <, =)
-* Introduction to string matching
+To build a strong foundation in SQL by practicing queries and understanding how to work with data.
 
-## 🗂️ Work Done
+## 📁 Contents
 
-* Created tables using provided SQL script
-* Practiced basic SQL queries from the question set
-* Solved multiple queries including filtering and selection
+Each day folder contains:
 
-## 📊 What I Learned Today
+* SQL queries
+* Output files
+* README explaining the work done
 
-* How to retrieve complete data from a table using `SELECT *`
-* How to select specific columns from a table
-* How to filter data using conditions with `WHERE`
-* How to use comparison operators like `>`, `<`, `=`
-* How to use pattern matching with `LIKE` (`%`, `_`)
-* Basic understanding of how real-world data is stored and queried
-
-## 📊 Key Learnings
-
-* Understood how to retrieve data from tables
-* Learned how to filter records based on conditions
-* Gained confidence in writing simple SQL queries
-
-## 📁 Files Included
-
-* queries.sql → Contains all SQL queries
-* output.txt → Contains outputs of executed queries
-
-## 🔗 DB Fiddle Practice Link
-
-https://www.db-fiddle.com/f/ve5HarsKtequ3HSCh7Y1Za/1
-
-## 🚀 Conclusion
-
-This session helped me build a strong foundation in SQL basics which will be useful for further data engineering tasks.
 
