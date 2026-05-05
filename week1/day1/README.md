@@ -45,7 +45,7 @@ Today I started learning the basics of SQL as part of the Databricks training pr
 
 ## 🔗 DB Fiddle Practice Link
 
-https://www.db-fiddle.com/f/ve5HarsKtequ3HSCh7Y1Za/1
+https://www.db-fiddle.com/f/ve5HarsKtequ3HSCh7Y1Za/2
 
 ## 🚀 Conclusion
 
