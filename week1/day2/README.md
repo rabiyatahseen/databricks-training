@@ -37,6 +37,11 @@ On Day 2, I continued practicing SQL by solving more queries and understanding s
 * queries.sql → Contains SQL queries
 * output.txt → Contains results of queries
 
+## 🔗 SQL Practice Link
+
+You can view my SQL queries and execution on DB Fiddle here:
+https://www.db-fiddle.com/f/ve5HarsKtequ3HSCh7Y1Za/3
+
 ## 🚀 Conclusion
 
 Day 2 helped me improve my understanding of SQL and made me more comfortable writing queries involving grouping and joins.
