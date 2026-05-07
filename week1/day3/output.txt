@@ -1,0 +1,596 @@
+**Query #31**
+
+    -- 31. Employees sorted by salary ASC
+    SELECT * FROM Employee
+    ORDER BY salary ASC;
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 4      | Alice Blue  | 25  | 45000.0 | 3             | 2021-03-22 |
+| 8      | Frank White | 32  | 48000.0 |               | 2021-07-10 |
+| 1      | John Doe    | 28  | 50000.0 | 1             | 2020-01-15 |
+| 5      | Charlie P.  | 29  | 50000.0 | 2             | 2019-12-01 |
+| 10     | Hannah Lee  | 30  | 53000.0 | 4             | 2020-02-25 |
+| 7      | Eve Black   | 40  | 55000.0 | 3             | 2021-08-30 |
+| 2      | Jane Smith  | 34  | 60000.0 | 2             | 2019-07-23 |
+| 9      | Grace Kelly | 27  | 65000.0 | 1             | 2018-11-13 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+
+---
+**Query #32**
+
+    -- 32. Employees sorted by age DESC
+    SELECT * FROM Employee
+    ORDER BY age DESC;
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+| 7      | Eve Black   | 40  | 55000.0 | 3             | 2021-08-30 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+| 2      | Jane Smith  | 34  | 60000.0 | 2             | 2019-07-23 |
+| 8      | Frank White | 32  | 48000.0 |               | 2021-07-10 |
+| 10     | Hannah Lee  | 30  | 53000.0 | 4             | 2020-02-25 |
+| 5      | Charlie P.  | 29  | 50000.0 | 2             | 2019-12-01 |
+| 1      | John Doe    | 28  | 50000.0 | 1             | 2020-01-15 |
+| 9      | Grace Kelly | 27  | 65000.0 | 1             | 2018-11-13 |
+| 4      | Alice Blue  | 25  | 45000.0 | 3             | 2021-03-22 |
+
+---
+**Query #33**
+
+    -- 33. Employees sorted by hire date ASC
+    SELECT * FROM Employee
+    ORDER BY hire_date ASC;
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+| 9      | Grace Kelly | 27  | 65000.0 | 1             | 2018-11-13 |
+| 2      | Jane Smith  | 34  | 60000.0 | 2             | 2019-07-23 |
+| 5      | Charlie P.  | 29  | 50000.0 | 2             | 2019-12-01 |
+| 1      | John Doe    | 28  | 50000.0 | 1             | 2020-01-15 |
+| 10     | Hannah Lee  | 30  | 53000.0 | 4             | 2020-02-25 |
+| 4      | Alice Blue  | 25  | 45000.0 | 3             | 2021-03-22 |
+| 8      | Frank White | 32  | 48000.0 |               | 2021-07-10 |
+| 7      | Eve Black   | 40  | 55000.0 | 3             | 2021-08-30 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+
+---
+**Query #34**
+
+    -- 34. Employees sorted by department then salary
+    SELECT * FROM Employee
+    ORDER BY department_id, salary;
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 8      | Frank White | 32  | 48000.0 |               | 2021-07-10 |
+| 1      | John Doe    | 28  | 50000.0 | 1             | 2020-01-15 |
+| 9      | Grace Kelly | 27  | 65000.0 | 1             | 2018-11-13 |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+| 5      | Charlie P.  | 29  | 50000.0 | 2             | 2019-12-01 |
+| 2      | Jane Smith  | 34  | 60000.0 | 2             | 2019-07-23 |
+| 4      | Alice Blue  | 25  | 45000.0 | 3             | 2021-03-22 |
+| 7      | Eve Black   | 40  | 55000.0 | 3             | 2021-08-30 |
+| 10     | Hannah Lee  | 30  | 53000.0 | 4             | 2020-02-25 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+
+---
+**Query #35**
+
+    -- 35. Departments ordered by total salary of employees
+    SELECT department_id, SUM(salary) AS total_salary
+    FROM Employee
+    GROUP BY department_id
+    ORDER BY total_salary;
+
+| department_id | total_salary |
+| ------------- | ------------ |
+|               | 48000.0      |
+| 3             | 100000.0     |
+| 2             | 110000.0     |
+| 4             | 123000.0     |
+| 1             | 195000.0     |
+
+---
+**Query #36**
+
+    -- 36. Employee names with department names
+    SELECT e.name, d.name
+    FROM Employee e
+    JOIN Department d ON e.department_id = d.department_id;
+
+| name        | name      |
+| ----------- | --------- |
+| John Doe    | IT        |
+| Bob Brown   | IT        |
+| Grace Kelly | IT        |
+| Jane Smith  | HR        |
+| Charlie P.  | HR        |
+| Alice Blue  | Finance   |
+| Eve Black   | Finance   |
+| David Green | Marketing |
+| Hannah Lee  | Marketing |
+
+---
+**Query #37**
+
+    -- 37. Project names with department names
+    SELECT p.name, d.name
+    FROM Project p
+    JOIN Department d ON p.department_id = d.department_id;
+
+| name            | name      |
+| --------------- | --------- |
+| Project Alpha   | IT        |
+| Project Gamma   | IT        |
+| Project Theta   | IT        |
+| Project Beta    | HR        |
+| Project Delta   | Finance   |
+| Project Eta     | Finance   |
+| Project Epsilon | Marketing |
+| Project Zeta    | Marketing |
+
+---
+**Query #38**
+
+    -- 38. Employee names with project names
+    SELECT e.name, p.name
+    FROM Employee e
+    JOIN Project p ON e.department_id = p.department_id;
+
+| name        | name            |
+| ----------- | --------------- |
+| John Doe    | Project Alpha   |
+| Bob Brown   | Project Alpha   |
+| Grace Kelly | Project Alpha   |
+| Jane Smith  | Project Beta    |
+| Charlie P.  | Project Beta    |
+| John Doe    | Project Gamma   |
+| Bob Brown   | Project Gamma   |
+| Grace Kelly | Project Gamma   |
+| Alice Blue  | Project Delta   |
+| Eve Black   | Project Delta   |
+| David Green | Project Epsilon |
+| Hannah Lee  | Project Epsilon |
+| David Green | Project Zeta    |
+| Hannah Lee  | Project Zeta    |
+| Alice Blue  | Project Eta     |
+| Eve Black   | Project Eta     |
+| John Doe    | Project Theta   |
+| Bob Brown   | Project Theta   |
+| Grace Kelly | Project Theta   |
+
+---
+**Query #39**
+
+    -- 39. All employees with departments (including no dept)
+    SELECT e.name, d.name
+    FROM Employee e
+    LEFT JOIN Department d ON e.department_id = d.department_id;
+
+| name        | name      |
+| ----------- | --------- |
+| John Doe    | IT        |
+| Bob Brown   | IT        |
+| Grace Kelly | IT        |
+| Jane Smith  | HR        |
+| Charlie P.  | HR        |
+| Alice Blue  | Finance   |
+| Eve Black   | Finance   |
+| David Green | Marketing |
+| Hannah Lee  | Marketing |
+| Frank White |           |
+
+---
+**Query #40**
+
+    -- 40. All departments with employees (including empty)
+    SELECT d.name, e.name
+    FROM Department d
+    LEFT JOIN Employee e ON d.department_id = e.department_id;
+
+| name      | name        |
+| --------- | ----------- |
+| IT        | John Doe    |
+| IT        | Bob Brown   |
+| IT        | Grace Kelly |
+| HR        | Jane Smith  |
+| HR        | Charlie P.  |
+| Finance   | Alice Blue  |
+| Finance   | Eve Black   |
+| Marketing | David Green |
+| Marketing | Hannah Lee  |
+
+---
+**Query #41**
+
+    -- 41. Employees not assigned to any project
+    SELECT e.*
+    FROM Employee e
+    LEFT JOIN Project p ON e.department_id = p.department_id
+    WHERE p.project_id IS NULL;
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 8      | Frank White | 32  | 48000.0 |               | 2021-07-10 |
+
+---
+**Query #42**
+
+    -- 42. Employees + number of projects their dept has
+    SELECT e.name, COUNT(p.project_id)
+    FROM Employee e
+    JOIN Project p ON e.department_id = p.department_id
+    GROUP BY e.name;
+
+| name        | COUNT(p.project_id) |
+| ----------- | ------------------- |
+| Alice Blue  | 2                   |
+| Bob Brown   | 3                   |
+| Charlie P.  | 1                   |
+| David Green | 2                   |
+| Eve Black   | 2                   |
+| Grace Kelly | 3                   |
+| Hannah Lee  | 2                   |
+| Jane Smith  | 1                   |
+| John Doe    | 3                   |
+
+---
+**Query #43**
+
+    -- 43. Departments with no employees
+    SELECT d.name
+    FROM Department d
+    LEFT JOIN Employee e ON d.department_id = e.department_id
+    WHERE e.emp_id IS NULL;
+
+There are no results to be displayed.
+
+---
+**Query #44**
+
+    -- 44. Employees in same dept as 'John Doe'
+    SELECT name
+    FROM Employee
+    WHERE department_id = (
+        SELECT department_id FROM Employee WHERE name = 'John Doe'
+    );
+
+| name        |
+| ----------- |
+| John Doe    |
+| Bob Brown   |
+| Grace Kelly |
+
+---
+**Query #45**
+
+    -- 45. Department with highest average salary
+    SELECT d.name
+    FROM Employee e
+    JOIN Department d ON e.department_id = d.department_id
+    GROUP BY d.name
+    ORDER BY AVG(e.salary) DESC
+    LIMIT 1;
+
+| name |
+| ---- |
+| IT   |
+
+---
+**Query #46**
+
+    -- 46. Employee with highest salary
+    SELECT * FROM Employee
+    WHERE salary = (SELECT MAX(salary) FROM Employee);
+
+| emp_id | name      | age | salary  | department_id | hire_date  |
+| ------ | --------- | --- | ------- | ------------- | ---------- |
+| 3      | Bob Brown | 45  | 80000.0 | 1             | 2018-02-12 |
+
+---
+**Query #47**
+
+    -- 47. Employees with salary above average
+    SELECT * FROM Employee
+    WHERE salary > (SELECT AVG(salary) FROM Employee);
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 2      | Jane Smith  | 34  | 60000.0 | 2             | 2019-07-23 |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+| 9      | Grace Kelly | 27  | 65000.0 | 1             | 2018-11-13 |
+
+---
+**Query #48**
+
+    -- 48. Second highest salary
+    SELECT MAX(salary)
+    FROM Employee
+    WHERE salary < (SELECT MAX(salary) FROM Employee);
+
+| MAX(salary) |
+| ----------- |
+| 70000.0     |
+
+---
+**Query #49**
+
+    -- 49. Department with most employees
+    SELECT department_id
+    FROM Employee
+    GROUP BY department_id
+    ORDER BY COUNT(*) DESC
+    LIMIT 1;
+
+| department_id |
+| ------------- |
+| 1             |
+
+---
+**Query #50**
+
+    -- 50. Employees earning more than dept average
+    SELECT *
+    FROM Employee e
+    WHERE salary > (
+        SELECT AVG(salary)
+        FROM Employee
+        WHERE department_id = e.department_id
+    );
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 2      | Jane Smith  | 34  | 60000.0 | 2             | 2019-07-23 |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+| 7      | Eve Black   | 40  | 55000.0 | 3             | 2021-08-30 |
+
+---
+**Query #51**
+
+    -- 51. nth highest salary (example: 3rd)
+    SELECT DISTINCT salary
+    FROM Employee
+    ORDER BY salary DESC
+    LIMIT 1 OFFSET 2;
+
+| salary  |
+| ------- |
+| 65000.0 |
+
+---
+**Query #52**
+
+    -- 52. Employees older than all HR employees
+    SELECT *
+    FROM Employee
+    WHERE age > ALL (
+        SELECT age FROM Employee
+        WHERE department_id = (
+            SELECT department_id FROM Department WHERE name = 'HR'
+        )
+    );
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+| 7      | Eve Black   | 40  | 55000.0 | 3             | 2021-08-30 |
+
+---
+**Query #53**
+
+    -- 53. Departments where avg salary > 55000
+    SELECT department_id
+    FROM Employee
+    GROUP BY department_id
+    HAVING AVG(salary) > 55000;
+
+| department_id |
+| ------------- |
+| 1             |
+| 4             |
+
+---
+**Query #54**
+
+    -- 54. Employees in dept with at least 2 projects
+    SELECT *
+    FROM Employee
+    WHERE department_id IN (
+        SELECT department_id
+        FROM Project
+        GROUP BY department_id
+        HAVING COUNT(*) >= 2
+    );
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 1      | John Doe    | 28  | 50000.0 | 1             | 2020-01-15 |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+| 4      | Alice Blue  | 25  | 45000.0 | 3             | 2021-03-22 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+| 7      | Eve Black   | 40  | 55000.0 | 3             | 2021-08-30 |
+| 9      | Grace Kelly | 27  | 65000.0 | 1             | 2018-11-13 |
+| 10     | Hannah Lee  | 30  | 53000.0 | 4             | 2020-02-25 |
+
+---
+**Query #55**
+
+    -- 55. Employees hired same date as Jane Smith
+    SELECT *
+    FROM Employee
+    WHERE hire_date = (
+        SELECT hire_date FROM Employee WHERE name = 'Jane Smith'
+    );
+
+| emp_id | name       | age | salary  | department_id | hire_date  |
+| ------ | ---------- | --- | ------- | ------------- | ---------- |
+| 2      | Jane Smith | 34  | 60000.0 | 2             | 2019-07-23 |
+
+---
+**Query #56**
+
+    -- 56. Total salary of employees hired in 2020
+    SELECT SUM(salary)
+    FROM Employee
+    WHERE YEAR(hire_date) = 2020;
+
+| SUM(salary) |
+| ----------- |
+| 103000.0    |
+
+---
+**Query #57**
+
+    -- 57. Avg salary per dept ordered desc
+    SELECT department_id, AVG(salary)
+    FROM Employee
+    GROUP BY department_id
+    ORDER BY AVG(salary) DESC;
+
+| department_id | AVG(salary) |
+| ------------- | ----------- |
+| 1             | 65000.0     |
+| 4             | 61500.0     |
+| 2             | 55000.0     |
+| 3             | 50000.0     |
+|               | 48000.0     |
+
+---
+**Query #58**
+
+    -- 58. Departments with >1 employee and avg salary > 55000
+    SELECT department_id
+    FROM Employee
+    GROUP BY department_id
+    HAVING COUNT(*) > 1 AND AVG(salary) > 55000;
+
+| department_id |
+| ------------- |
+| 1             |
+| 4             |
+
+---
+**Query #59**
+
+    -- 59. Employees hired in last 2 years
+    SELECT *
+    FROM Employee
+    WHERE hire_date >= DATE_SUB(CURDATE(), INTERVAL 2 YEAR)
+    ORDER BY hire_date;
+
+There are no results to be displayed.
+
+---
+**Query #60**
+
+    -- 60. Total employees & avg salary for depts with >2 employees
+    SELECT department_id, COUNT(*), AVG(salary)
+    FROM Employee
+    GROUP BY department_id
+    HAVING COUNT(*) > 2;
+
+| department_id | COUNT(*) | AVG(salary) |
+| ------------- | -------- | ----------- |
+| 1             | 3        | 65000.0     |
+
+---
+**Query #61**
+
+    -- 61. Employees with salary above dept average
+    SELECT name, salary
+    FROM Employee e
+    WHERE salary > (
+        SELECT AVG(salary)
+        FROM Employee
+        WHERE department_id = e.department_id
+    );
+
+| name        | salary  |
+| ----------- | ------- |
+| Jane Smith  | 60000.0 |
+| Bob Brown   | 80000.0 |
+| David Green | 70000.0 |
+| Eve Black   | 55000.0 |
+
+---
+**Query #62**
+
+    -- 62. Employees hired on same date as oldest employee
+    SELECT name
+    FROM Employee
+    WHERE hire_date = (
+        SELECT hire_date
+        FROM Employee
+        ORDER BY age DESC
+        LIMIT 1
+    );
+
+| name      |
+| --------- |
+| Bob Brown |
+
+---
+**Query #63**
+
+    -- 63. Dept names with number of projects
+    SELECT d.name, COUNT(p.project_id)
+    FROM Department d
+    LEFT JOIN Project p ON d.department_id = p.department_id
+    GROUP BY d.name
+    ORDER BY COUNT(p.project_id);
+
+| name      | COUNT(p.project_id) |
+| --------- | ------------------- |
+| HR        | 1                   |
+| Marketing | 2                   |
+| Finance   | 2                   |
+| IT        | 3                   |
+
+---
+**Query #64**
+
+    -- 64. Employee with highest salary in each department
+    SELECT *
+    FROM Employee e
+    WHERE salary = (
+        SELECT MAX(salary)
+        FROM Employee
+        WHERE department_id = e.department_id
+    );
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 2      | Jane Smith  | 34  | 60000.0 | 2             | 2019-07-23 |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+| 7      | Eve Black   | 40  | 55000.0 | 3             | 2021-08-30 |
+
+---
+**Query #65**
+
+    -- 65. Employees older than avg age in their department
+    SELECT name, salary
+    FROM Employee e
+    WHERE age > (
+        SELECT AVG(age)
+        FROM Employee
+        WHERE department_id = e.department_id
+    );
+
+| name        | salary  |
+| ----------- | ------- |
+| Jane Smith  | 60000.0 |
+| Bob Brown   | 80000.0 |
+| David Green | 70000.0 |
+| Eve Black   | 55000.0 |
+
+---
+
+[View on DB Fiddle](https://www.db-fiddle.com/f/ve5HarsKtequ3HSCh7Y1Za/4)
