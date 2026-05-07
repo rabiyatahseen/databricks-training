@@ -55,3 +55,21 @@ SELECT department_id
 FROM Employee
 GROUP BY department_id
 HAVING AVG(salary) > 55000;
+
+-- 28. Years with more than 1 employee hired
+SELECT YEAR(hire_date)
+FROM Employee
+GROUP BY YEAR(hire_date)
+HAVING COUNT(*) > 1;
+
+-- 29. Departments with total salary < 100000
+SELECT department_id
+FROM Employee
+GROUP BY department_id
+HAVING SUM(salary) < 100000;
+
+-- 30. Departments with max salary > 75000
+SELECT department_id
+FROM Employee
+GROUP BY department_id
+HAVING MAX(salary) > 75000;
