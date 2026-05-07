@@ -1,106 +1,268 @@
-# Results
+**Schema (MySQL v5.7)**
 
-Query #1 Execution time: 0.16ms
-emp_id	name	age	salary	department_id	hire_date
-1	John Doe	28	50000.0	1	2020-01-15
-2	Jane Smith	34	60000.0	2	2019-07-23
-3	Bob Brown	45	80000.0	1	2018-02-12
-4	Alice Blue	25	45000.0	3	2021-03-22
-5	Charlie P.	29	50000.0	2	2019-12-01
-6	David Green	38	70000.0	4	2022-05-18
-7	Eve Black	40	55000.0	3	2021-08-30
-8	Frank White	32	48000.0	null	2021-07-10
-9	Grace Kelly	27	65000.0	1	2018-11-13
-10	Hannah Lee	30	53000.0	4	2020-02-25
+    -- Create Department table
+    CREATE TABLE Department (
+        department_id INT PRIMARY KEY,
+        name VARCHAR(50) NOT NULL
+    );
+    
+    -- Create Employee table
+    CREATE TABLE Employee (
+        emp_id INT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        age INT,
+        salary DECIMAL(10, 2),
+        department_id INT,
+        hire_date DATE,
+        FOREIGN KEY (department_id) REFERENCES Department(department_id)
+    );
+    
+    -- Create Project table
+    CREATE TABLE Project (
+        project_id INT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        department_id INT,
+        FOREIGN KEY (department_id) REFERENCES Department(department_id)
+    );
+    
+    -- Insert data into Department table
+    INSERT INTO Department (department_id, name) VALUES
+    (1, 'IT'),
+    (2, 'HR'),
+    (3, 'Finance'),
+    (4, 'Marketing');
+    
+    -- Insert data into Employee table
+    INSERT INTO Employee (emp_id, name, age, salary, department_id, hire_date) VALUES
+    (1, 'John Doe', 28, 50000.00, 1, '2020-01-15'),
+    (2, 'Jane Smith', 34, 60000.00, 2, '2019-07-23'),
+    (3, 'Bob Brown', 45, 80000.00, 1, '2018-02-12'),
+    (4, 'Alice Blue', 25, 45000.00, 3, '2021-03-22'),
+    (5, 'Charlie P.', 29, 50000.00, 2, '2019-12-01'),
+    (6, 'David Green', 38, 70000.00, 4, '2022-05-18'),
+    (7, 'Eve Black', 40, 55000.00, 3, '2021-08-30');
+    
+    -- Insert data into Project table
+    INSERT INTO Project (project_id, name, department_id) VALUES
+    (1, 'Project Alpha', 1),
+    (2, 'Project Beta', 2),
+    (3, 'Project Gamma', 1),
+    (4, 'Project Delta', 3),
+    (5, 'Project Epsilon', 4),
+    (6, 'Project Zeta', 4),
+    (7, 'Project Eta', 3);
+    -- Insert additional data into Department table (if needed)
+    -- No additional departments needed for this data set
+    
+    -- Insert additional data into Employee table to test edge cases for joins and nested queries
+    INSERT INTO Employee (emp_id, name, age, salary, department_id, hire_date) VALUES
+    (8, 'Frank White', 32, 48000.00, NULL, '2021-07-10'),  -- Employee without a department
+    (9, 'Grace Kelly', 27, 65000.00, 1, '2018-11-13'),
+    (10, 'Hannah Lee', 30, 53000.00, 4, '2020-02-25');
+    
+    -- Insert additional data into Project table to test edge cases for joins
+    INSERT INTO Project (project_id, name, department_id) VALUES
+    (8, 'Project Theta', 1),
+    (9, 'Project Iota', NULL);  -- Project without a department
+    
 
-Query #2 Execution time: 0.09ms
-name	salary
-John Doe	50000.0
-Jane Smith	60000.0
-Bob Brown	80000.0
-Alice Blue	45000.0
-Charlie P.	50000.0
-David Green	70000.0
-Eve Black	55000.0
-Frank White	48000.0
-Grace Kelly	65000.0
-Hannah Lee	53000.0
+---
 
-Query #3 Execution time: 0.12ms
-emp_id	name	age	salary	department_id	hire_date
-2	Jane Smith	34	60000.0	2	2019-07-23
-3	Bob Brown	45	80000.0	1	2018-02-12
-6	David Green	38	70000.0	4	2022-05-18
-7	Eve Black	40	55000.0	3	2021-08-30
-8	Frank White	32	48000.0	null	2021-07-10
+**Query #1**
 
-Query #4 Execution time: 0.06ms
-name
-IT
-HR
-Finance
-Marketing
+    -- 1. Select all columns
+    SELECT * FROM Employee;
 
-Query #5 Execution time: 0.19ms
-emp_id	name	age	salary	department_id	hire_date
-1	John Doe	28	50000.0	1	2020-01-15
-3	Bob Brown	45	80000.0	1	2018-02-12
-9	Grace Kelly	27	65000.0	1	2018-11-13
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 1      | John Doe    | 28  | 50000.0 | 1             | 2020-01-15 |
+| 2      | Jane Smith  | 34  | 60000.0 | 2             | 2019-07-23 |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+| 4      | Alice Blue  | 25  | 45000.0 | 3             | 2021-03-22 |
+| 5      | Charlie P.  | 29  | 50000.0 | 2             | 2019-12-01 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+| 7      | Eve Black   | 40  | 55000.0 | 3             | 2021-08-30 |
+| 8      | Frank White | 32  | 48000.0 |               | 2021-07-10 |
+| 9      | Grace Kelly | 27  | 65000.0 | 1             | 2018-11-13 |
+| 10     | Hannah Lee  | 30  | 53000.0 | 4             | 2020-02-25 |
 
-Query #6 Execution time: 0.16ms
-emp_id	name	age	salary	department_id	hire_date
-1	John Doe	28	50000.0	1	2020-01-15
-2	Jane Smith	34	60000.0	2	2019-07-23
+---
+**Query #2**
 
-Query #7 Execution time: 0.11ms
-emp_id	name	age	salary	department_id	hire_date
-1	John Doe	28	50000.0	1	2020-01-15
-4	Alice Blue	25	45000.0	3	2021-03-22
-8	Frank White	32	48000.0	null	2021-07-10
-10	Hannah Lee	30	53000.0	4	2020-02-25
+    -- 2. Select name and salary
+    SELECT name, salary FROM Employee;
 
-Query #8 Execution time: 0.1ms
-emp_id	name	age	salary	department_id	hire_date
-2	Jane Smith	34	60000.0	2	2019-07-23
-4	Alice Blue	25	45000.0	3	2021-03-22
-5	Charlie P.	29	50000.0	2	2019-12-01
-6	David Green	38	70000.0	4	2022-05-18
-7	Eve Black	40	55000.0	3	2021-08-30
-8	Frank White	32	48000.0	null	2021-07-10
-9	Grace Kelly	27	65000.0	1	2018-11-13
-10	Hannah Lee	30	53000.0	4	2020-02-25
+| name        | salary  |
+| ----------- | ------- |
+| John Doe    | 50000.0 |
+| Jane Smith  | 60000.0 |
+| Bob Brown   | 80000.0 |
+| Alice Blue  | 45000.0 |
+| Charlie P.  | 50000.0 |
+| David Green | 70000.0 |
+| Eve Black   | 55000.0 |
+| Frank White | 48000.0 |
+| Grace Kelly | 65000.0 |
+| Hannah Lee  | 53000.0 |
 
-Query #9 Execution time: 0.1ms
-emp_id	name	age	salary	department_id	hire_date
-3	Bob Brown	45	80000.0	1	2018-02-12
-7	Eve Black	40	55000.0	3	2021-08-30
+---
+**Query #3**
 
-Query #10 Execution time: 0.07ms
-emp_id	name	age	salary	department_id	hire_date
-1	John Doe	28	50000.0	1	2020-01-15
-3	Bob Brown	45	80000.0	1	2018-02-12
+    -- 3. Employees older than 30
+    SELECT * FROM Employee WHERE age > 30;
 
-Query #11 Execution time: 0.08ms
-emp_id	name	age	salary	department_id	hire_date
-1	John Doe	28	50000.0	1	2020-01-15
-10	Hannah Lee	30	53000.0	4	2020-02-25
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 2      | Jane Smith  | 34  | 60000.0 | 2             | 2019-07-23 |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+| 7      | Eve Black   | 40  | 55000.0 | 3             | 2021-08-30 |
+| 8      | Frank White | 32  | 48000.0 |               | 2021-07-10 |
 
-Query #12 Execution time: 0.08ms
-emp_id	name	age	salary	department_id	hire_date
-1	John Doe	28	50000.0	1	2020-01-15
+---
+**Query #4**
 
-Query #13 Execution time: 0.08ms
-emp_id	name	age	salary	department_id	hire_date
-3	Bob Brown	45	80000.0	1	2018-02-12
-9	Grace Kelly	27	65000.0	1	2018-11-13
+    -- 4. Names of all departments
+    SELECT name FROM Department;
 
-Query #14 Execution time: 0.08ms
-emp_id	name	age	salary	department_id	hire_date
-4	Alice Blue	25	45000.0	3	2021-03-22
-6	David Green	38	70000.0	4	2022-05-18
-7	Eve Black	40	55000.0	3	2021-08-30
-8	Frank White	32	48000.0	null	2021-07-10
+| name      |
+| --------- |
+| IT        |
+| HR        |
+| Finance   |
+| Marketing |
 
-Query #15 Execution time: 0.08ms
-SUM(salary)
-576000.0
+---
+**Query #5**
+
+    -- 5. Employees in IT department
+    SELECT e.* 
+    FROM Employee e
+    JOIN Department d ON e.department_id = d.department_id
+    WHERE d.name = 'IT';
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 1      | John Doe    | 28  | 50000.0 | 1             | 2020-01-15 |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+| 9      | Grace Kelly | 27  | 65000.0 | 1             | 2018-11-13 |
+
+---
+**Query #6**
+
+    -- 6. Names starting with 'J'
+    SELECT * FROM Employee WHERE name LIKE 'J%';
+
+| emp_id | name       | age | salary  | department_id | hire_date  |
+| ------ | ---------- | --- | ------- | ------------- | ---------- |
+| 1      | John Doe   | 28  | 50000.0 | 1             | 2020-01-15 |
+| 2      | Jane Smith | 34  | 60000.0 | 2             | 2019-07-23 |
+
+---
+**Query #7**
+
+    -- 7. Names ending with 'e'
+    SELECT * FROM Employee WHERE name LIKE '%e';
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 1      | John Doe    | 28  | 50000.0 | 1             | 2020-01-15 |
+| 4      | Alice Blue  | 25  | 45000.0 | 3             | 2021-03-22 |
+| 8      | Frank White | 32  | 48000.0 |               | 2021-07-10 |
+| 10     | Hannah Lee  | 30  | 53000.0 | 4             | 2020-02-25 |
+
+---
+**Query #8**
+
+    -- 8. Names containing 'a'
+    SELECT * FROM Employee WHERE name LIKE '%a%';
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 2      | Jane Smith  | 34  | 60000.0 | 2             | 2019-07-23 |
+| 4      | Alice Blue  | 25  | 45000.0 | 3             | 2021-03-22 |
+| 5      | Charlie P.  | 29  | 50000.0 | 2             | 2019-12-01 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+| 7      | Eve Black   | 40  | 55000.0 | 3             | 2021-08-30 |
+| 8      | Frank White | 32  | 48000.0 |               | 2021-07-10 |
+| 9      | Grace Kelly | 27  | 65000.0 | 1             | 2018-11-13 |
+| 10     | Hannah Lee  | 30  | 53000.0 | 4             | 2020-02-25 |
+
+---
+**Query #9**
+
+    -- 9. Names with exactly 9 characters
+    SELECT * FROM Employee WHERE LENGTH(name) = 9;
+
+| emp_id | name      | age | salary  | department_id | hire_date  |
+| ------ | --------- | --- | ------- | ------------- | ---------- |
+| 3      | Bob Brown | 45  | 80000.0 | 1             | 2018-02-12 |
+| 7      | Eve Black | 40  | 55000.0 | 3             | 2021-08-30 |
+
+---
+**Query #10**
+
+    -- 10. Names with 'o' as second character
+    SELECT * FROM Employee WHERE name LIKE '_o%';
+
+| emp_id | name      | age | salary  | department_id | hire_date  |
+| ------ | --------- | --- | ------- | ------------- | ---------- |
+| 1      | John Doe  | 28  | 50000.0 | 1             | 2020-01-15 |
+| 3      | Bob Brown | 45  | 80000.0 | 1             | 2018-02-12 |
+
+---
+**Query #11**
+
+    -- 11. Employees hired in 2020
+    SELECT * FROM Employee WHERE YEAR(hire_date) = 2020;
+
+| emp_id | name       | age | salary  | department_id | hire_date  |
+| ------ | ---------- | --- | ------- | ------------- | ---------- |
+| 1      | John Doe   | 28  | 50000.0 | 1             | 2020-01-15 |
+| 10     | Hannah Lee | 30  | 53000.0 | 4             | 2020-02-25 |
+
+---
+**Query #12**
+
+    -- 12. Employees hired in January
+    SELECT * FROM Employee WHERE MONTH(hire_date) = 1;
+
+| emp_id | name     | age | salary  | department_id | hire_date  |
+| ------ | -------- | --- | ------- | ------------- | ---------- |
+| 1      | John Doe | 28  | 50000.0 | 1             | 2020-01-15 |
+
+---
+**Query #13**
+
+    -- 13. Employees hired before 2019
+    SELECT * FROM Employee WHERE hire_date < '2019-01-01';
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 3      | Bob Brown   | 45  | 80000.0 | 1             | 2018-02-12 |
+| 9      | Grace Kelly | 27  | 65000.0 | 1             | 2018-11-13 |
+
+---
+**Query #14**
+
+    -- 14. Employees hired on or after March 1, 2021
+    SELECT * FROM Employee WHERE hire_date >= '2021-03-01';
+
+| emp_id | name        | age | salary  | department_id | hire_date  |
+| ------ | ----------- | --- | ------- | ------------- | ---------- |
+| 4      | Alice Blue  | 25  | 45000.0 | 3             | 2021-03-22 |
+| 6      | David Green | 38  | 70000.0 | 4             | 2022-05-18 |
+| 7      | Eve Black   | 40  | 55000.0 | 3             | 2021-08-30 |
+| 8      | Frank White | 32  | 48000.0 |               | 2021-07-10 |
+
+---
+**Query #15**
+
+    -- 15. Employees hired in the last 2 years
+    SELECT * 
+    FROM Employee
+    WHERE hire_date >= DATE_SUB(CURDATE(), INTERVAL 2 YEAR);
+
+There are no results to be displayed.
+
+[View on DB Fiddle](https://www.db-fiddle.com/f/ve5HarsKtequ3HSCh7Y1Za/2)
