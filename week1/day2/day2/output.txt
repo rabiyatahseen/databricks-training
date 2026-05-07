@@ -1,87 +1,211 @@
-Query #16 Execution time: 0.08ms
-SUM(salary)
-576000.0
+**Query #16**
 
-Query #17 Execution time: 0.06ms
-AVG(salary)
-57600.0
+    -- 16. Total salary of all employees
+    SELECT SUM(salary) FROM Employee;
 
-Query #18 Execution time: 0.06ms
-MIN(salary)
-45000.0
+| SUM(salary) |
+| ----------- |
+| 576000.0    |
 
-Query #19 Execution time: 0.09ms
-department_id	COUNT(*)
-null	1
-1	3
-2	2
-3	2
-4	2
+---
+**Query #17**
 
-Query #20 Execution time: 0.09ms
-department_id	AVG(salary)
-null	48000.0
-1	65000.0
-2	55000.0
-3	50000.0
-4	61500.0
+    -- 17. Average salary of employees
+    SELECT AVG(salary) FROM Employee;
 
-Query #21 Execution time: 0.1ms
-department_id	SUM(salary)
-null	48000.0
-1	195000.0
-2	110000.0
-3	100000.0
-4	123000.0
+| AVG(salary) |
+| ----------- |
+| 57600.0     |
 
-Query #22 Execution time: 0.08ms
-department_id	AVG(age)
-null	32.0
-1	33.3333
-2	31.5
-3	32.5
-4	34.0
+---
+**Query #18**
 
-Query #23 Execution time: 0.13ms
-year	COUNT(*)
-2018	2
-2019	2
-2020	2
-2021	3
-2022	1
+    -- 18. Minimum salary in Employee table
+    SELECT MIN(salary) FROM Employee;
 
-Query #24 Execution time: 0.09ms
-department_id	MAX(salary)
-null	48000.0
-1	80000.0
-2	60000.0
-3	55000.0
-4	70000.0
+| MIN(salary) |
+| ----------- |
+| 45000.0     |
 
-Query #25 Execution time: 0.1ms
-department_id
-1
+---
+**Query #19**
 
-Query #26 Execution time: 0.07ms
-department_id
-1
+    -- 19. Number of employees in each department
+    SELECT department_id, COUNT(*) 
+    FROM Employee 
+    GROUP BY department_id;
 
-Query #27 Execution time: 0.08ms
-department_id
-1
-4
+| department_id | COUNT(*) |
+| ------------- | -------- |
+|               | 1        |
+| 1             | 3        |
+| 2             | 2        |
+| 3             | 2        |
+| 4             | 2        |
 
-Query #28 Execution time: 6.59ms
-YEAR(hire_date)
-2018
-2019
-2020
-2021
+---
+**Query #20**
 
-Query #29 Execution time: 0.21ms
-department_id
-null
+    -- 20. Average salary in each department
+    SELECT department_id, AVG(salary) 
+    FROM Employee 
+    GROUP BY department_id;
 
-Query #30 Execution time: 0.12ms
-department_id
-1
+| department_id | AVG(salary) |
+| ------------- | ----------- |
+|               | 48000.0     |
+| 1             | 65000.0     |
+| 2             | 55000.0     |
+| 3             | 50000.0     |
+| 4             | 61500.0     |
+
+---
+**Query #21**
+
+    -- 21. Total salary for each department
+    SELECT department_id, SUM(salary)
+    FROM Employee
+    GROUP BY department_id;
+
+| department_id | SUM(salary) |
+| ------------- | ----------- |
+|               | 48000.0     |
+| 1             | 195000.0    |
+| 2             | 110000.0    |
+| 3             | 100000.0    |
+| 4             | 123000.0    |
+
+---
+**Query #22**
+
+    -- 22. Average age in each department
+    SELECT department_id, AVG(age)
+    FROM Employee
+    GROUP BY department_id;
+
+| department_id | AVG(age) |
+| ------------- | -------- |
+|               | 32.0     |
+| 1             | 33.3333  |
+| 2             | 31.5     |
+| 3             | 32.5     |
+| 4             | 34.0     |
+
+---
+**Query #23**
+
+    -- 23. Number of employees hired each year
+    SELECT YEAR(hire_date) AS year, COUNT(*)
+    FROM Employee
+    GROUP BY YEAR(hire_date);
+
+| year | COUNT(*) |
+| ---- | -------- |
+| 2018 | 2        |
+| 2019 | 2        |
+| 2020 | 2        |
+| 2021 | 3        |
+| 2022 | 1        |
+
+---
+**Query #24**
+
+    -- 24. Highest salary in each department
+    SELECT department_id, MAX(salary)
+    FROM Employee
+    GROUP BY department_id;
+
+| department_id | MAX(salary) |
+| ------------- | ----------- |
+|               | 48000.0     |
+| 1             | 80000.0     |
+| 2             | 60000.0     |
+| 3             | 55000.0     |
+| 4             | 70000.0     |
+
+---
+**Query #25**
+
+    -- 25. Department with highest average salary
+    SELECT department_id
+    FROM Employee
+    GROUP BY department_id
+    ORDER BY AVG(salary) DESC
+    LIMIT 1;
+
+| department_id |
+| ------------- |
+| 1             |
+
+---
+**Query #26**
+
+    -- 26. Departments with more than 2 employees
+    SELECT department_id
+    FROM Employee
+    GROUP BY department_id
+    HAVING COUNT(*) > 2;
+
+| department_id |
+| ------------- |
+| 1             |
+
+---
+**Query #27**
+
+    -- 27. Departments with avg salary > 55000
+    SELECT department_id
+    FROM Employee
+    GROUP BY department_id
+    HAVING AVG(salary) > 55000;
+
+| department_id |
+| ------------- |
+| 1             |
+| 4             |
+
+---
+**Query #28**
+
+    -- 28. Years with more than 1 employee hired
+    SELECT YEAR(hire_date)
+    FROM Employee
+    GROUP BY YEAR(hire_date)
+    HAVING COUNT(*) > 1;
+
+| YEAR(hire_date) |
+| --------------- |
+| 2018            |
+| 2019            |
+| 2020            |
+| 2021            |
+
+---
+**Query #29**
+
+    -- 29. Departments with total salary < 100000
+    SELECT department_id
+    FROM Employee
+    GROUP BY department_id
+    HAVING SUM(salary) < 100000;
+
+| department_id |
+| ------------- |
+|               |
+
+---
+**Query #30**
+
+    -- 30. Departments with max salary > 75000
+    SELECT department_id
+    FROM Employee
+    GROUP BY department_id
+    HAVING MAX(salary) > 75000;
+
+| department_id |
+| ------------- |
+| 1             |
+
+---
+
+[View on DB Fiddle](https://www.db-fiddle.com/f/ve5HarsKtequ3HSCh7Y1Za/3)
