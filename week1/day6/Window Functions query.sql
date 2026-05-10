@@ -1,9 +1,4 @@
--- =========================================
 -- WINDOW FUNCTIONS & CTE ASSIGNMENT
--- Queries 21 - 30
--- PostgreSQL Compatible
--- =========================================
-
 
 -- 21. Create a CTE to calculate total sales per employee.
 
