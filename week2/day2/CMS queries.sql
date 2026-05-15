@@ -1,7 +1,4 @@
--- =========================================
 -- CMS QUESTIONS 11 - 20
--- =========================================
-
 
 -- 11. Display names of students
 -- who belong to Computer Science department.
