@@ -1,0 +1,475 @@
+**Schema (PostgreSQL v18)**
+
+    -- =====================================================
+    -- COLLEGE MANAGEMENT SYSTEM (CMS)
+    -- COMPLETE PRACTICE DATABASE
+    -- =====================================================
+    
+    DROP TABLE IF EXISTS Mark;
+    DROP TABLE IF EXISTS Subject;
+    DROP TABLE IF EXISTS Student;
+    DROP TABLE IF EXISTS Staff;
+    DROP TABLE IF EXISTS Department;
+    
+    CREATE TABLE Department (
+        department_id INT PRIMARY KEY,
+        department_name VARCHAR(50),
+        department_block_number INT,
+        yearly_budget DECIMAL(12,2)
+    );
+    
+    CREATE TABLE Staff (
+        staff_id INT PRIMARY KEY,
+        staff_name VARCHAR(50),
+        designation VARCHAR(30),
+        salary DECIMAL(10,2),
+        hire_date DATE,
+        department_id INT,
+        FOREIGN KEY (department_id) REFERENCES Department(department_id)
+    );
+    
+    CREATE TABLE Student (
+        student_id INT PRIMARY KEY,
+        student_name VARCHAR(50),
+        gender VARCHAR(10),
+        city VARCHAR(50),
+        admission_year INT,
+        department_id INT,
+        cgpa DECIMAL(3,2),
+        FOREIGN KEY (department_id) REFERENCES Department(department_id)
+    );
+    
+    CREATE TABLE Subject (
+        subject_id INT PRIMARY KEY,
+        subject_name VARCHAR(50),
+        subject_code VARCHAR(20),
+        semester INT,
+        credits INT,
+        staff_id INT,
+        FOREIGN KEY (staff_id) REFERENCES Staff(staff_id)
+    );
+    
+    CREATE TABLE Mark (
+        student_id INT,
+        subject_id INT,
+        exam_type VARCHAR(20),
+        marks INT,
+        exam_date DATE,
+        PRIMARY KEY(student_id, subject_id, exam_type),
+        FOREIGN KEY (student_id) REFERENCES Student(student_id),
+        FOREIGN KEY (subject_id) REFERENCES Subject(subject_id)
+    );
+    
+    -- =====================================================
+    -- INSERT DEPARTMENTS
+    -- =====================================================
+    
+    INSERT INTO Department VALUES
+    (1,'Computer Science',101,800000),
+    (2,'Mechanical',102,600000),
+    (3,'Electronics',103,550000),
+    (4,'Civil',104,450000),
+    (5,'Mathematics',105,300000),
+    (6,NULL,106,200000),
+    (7,'Biotechnology',NULL,NULL);
+    
+    -- =====================================================
+    -- INSERT STAFF
+    -- =====================================================
+    
+    INSERT INTO Staff VALUES
+    (1,'Alice Johnson','Professor',95000,'2015-06-12',1),
+    (2,'Bob Smith','Associate Professor',82000,'2017-09-01',1),
+    (3,'Charlie Brown','Professor',91000,'2014-03-21',2),
+    (4,'David Lee','Lecturer',55000,'2020-07-15',2),
+    (5,'Eva Green','Professor',99000,'2013-11-05',3),
+    (6,'Frank Hall','Lecturer',NULL,'2021-01-12',3),
+    (7,'Grace Miller','HOD',120000,'2010-02-28',4),
+    (8,NULL,'Lecturer',50000,'2022-08-18',NULL),
+    (9,'Henry Ford','Assistant Professor',65000,NULL,5),
+    (10,'Ivy Clark','Professor',98000,'2012-04-17',NULL);
+    
+    -- =====================================================
+    -- INSERT STUDENTS
+    -- =====================================================
+    
+    INSERT INTO Student VALUES
+    (101,'John Doe','Male','New York',2021,1,8.7),
+    (102,'Mary Jane','Female','Chicago',2020,1,9.1),
+    (103,'Steve Rogers','Male','Dallas',2022,2,7.5),
+    (104,'Natasha Romanoff','Female','Boston',2021,2,8.0),
+    (105,'Bruce Wayne','Male','Gotham',2019,3,9.5),
+    (106,'Clark Kent','Male','Metropolis',2020,3,6.9),
+    (107,'Diana Prince','Female','Washington',2022,4,8.4),
+    (108,'Peter Parker','Male','Queens',2021,4,NULL),
+    (109,'Tony Stark','Male','Malibu',2019,1,9.8),
+    (110,'Wanda Maximoff','Female','Chicago',2022,5,7.2),
+    (111,'Barry Allen','Male',NULL,2023,5,6.5),
+    (112,NULL,'Female','Seattle',2023,NULL,NULL),
+    (113,'Scott Lang','Male','San Francisco',2021,NULL,5.8),
+    (114,'Jean Grey','Female','New York',2020,6,8.8),
+    (115,'Logan Howlett','Male','Denver',2022,7,7.7);
+    
+    -- =====================================================
+    -- INSERT SUBJECTS
+    -- =====================================================
+    
+    INSERT INTO Subject VALUES
+    (201,'Database Systems','CS301',3,4,1),
+    (202,'Operating Systems','CS302',3,4,2),
+    (203,'Machine Design','ME201',4,3,3),
+    (204,'Thermodynamics','ME202',4,4,4),
+    (205,'Digital Electronics','EC301',5,4,5),
+    (206,'Signals and Systems','EC302',5,3,6),
+    (207,'Structural Engineering','CV401',6,4,7),
+    (208,'Linear Algebra','MA101',1,3,9),
+    (209,NULL,'GEN999',2,2,NULL),
+    (210,'Artificial Intelligence','CS401',6,5,1);
+    
+    -- =====================================================
+    -- INSERT MARKS
+    -- =====================================================
+    
+    INSERT INTO Mark VALUES
+    (101,201,'Mid',88,'2024-03-10'),
+    (101,201,'Final',91,'2024-05-10'),
+    (101,202,'Mid',75,'2024-03-11'),
+    (102,201,'Mid',95,'2024-03-10'),
+    (102,202,'Final',89,'2024-05-11'),
+    (103,203,'Mid',66,'2024-03-09'),
+    (103,204,'Final',72,'2024-05-12'),
+    (104,203,'Final',81,'2024-05-12'),
+    (105,205,'Mid',98,'2024-03-14'),
+    (105,206,'Final',94,'2024-05-14'),
+    (106,205,'Mid',54,'2024-03-14'),
+    (106,206,'Final',61,'2024-05-14'),
+    (107,207,'Mid',87,'2024-03-16'),
+    (108,207,'Final',NULL,'2024-05-16'),
+    (109,201,'Final',99,'2024-05-10'),
+    (109,210,'Mid',97,'2024-03-20'),
+    (110,208,'Mid',71,'2024-03-18'),
+    (111,208,'Final',65,'2024-05-18'),
+    (112,209,'Mid',NULL,'2024-03-21'),
+    (113,210,'Final',44,'2024-05-20'),
+    (114,208,'Mid',90,'2024-03-18'),
+    (115,209,'Final',73,'2024-05-22');
+    
+
+---
+
+**Query #1**
+
+    -- CMS QUESTIONS 41 - 50
+    -- Advanced Window Functions & Reporting
+    
+    -- 41. Find the first student admitted in each department.
+    
+    SELECT *
+    FROM (
+        SELECT s.student_name,
+               d.department_name,
+               s.admission_year,
+               ROW_NUMBER() OVER (
+                   PARTITION BY d.department_name
+                   ORDER BY s.admission_year
+               ) AS row_num
+        FROM Student s
+        JOIN Department d
+        ON s.department_id = d.department_id
+    ) ranked_students
+    WHERE row_num = 1;
+
+| student_name     | department_name  | admission_year | row_num |
+| ---------------- | ---------------- | -------------- | ------- |
+| Logan Howlett    | Biotechnology    | 2022           | 1       |
+| Peter Parker     | Civil            | 2021           | 1       |
+| Tony Stark       | Computer Science | 2019           | 1       |
+| Bruce Wayne      | Electronics      | 2019           | 1       |
+| Wanda Maximoff   | Mathematics      | 2022           | 1       |
+| Natasha Romanoff | Mechanical       | 2021           | 1       |
+| Jean Grey        |                  | 2020           | 1       |
+
+---
+**Query #2**
+
+    -- 42. Display the latest hired staff member in each department.
+    
+    SELECT *
+    FROM (
+        SELECT st.staff_name,
+               d.department_name,
+               st.hire_date,
+               ROW_NUMBER() OVER (
+                   PARTITION BY d.department_name
+                   ORDER BY st.hire_date DESC
+               ) AS row_num
+        FROM Staff st
+        JOIN Department d
+        ON st.department_id = d.department_id
+    ) ranked_staff
+    WHERE row_num = 1;
+
+| staff_name   | department_name  | hire_date  | row_num |
+| ------------ | ---------------- | ---------- | ------- |
+| Grace Miller | Civil            | 2010-02-28 | 1       |
+| Bob Smith    | Computer Science | 2017-09-01 | 1       |
+| Frank Hall   | Electronics      | 2021-01-12 | 1       |
+| Henry Ford   | Mathematics      |            | 1       |
+| David Lee    | Mechanical       | 2020-07-15 | 1       |
+
+---
+**Query #3**
+
+    -- 43. Divide students into 4 CGPA quartiles using NTILE().
+    
+    SELECT student_name,
+           cgpa,
+           NTILE(4) OVER (
+               ORDER BY cgpa DESC
+           ) AS cgpa_quartile
+    FROM Student;
+
+| student_name     | cgpa | cgpa_quartile |
+| ---------------- | ---- | ------------- |
+| Peter Parker     |      | 1             |
+|                  |      | 1             |
+| Tony Stark       | 9.80 | 1             |
+| Bruce Wayne      | 9.50 | 1             |
+| Mary Jane        | 9.10 | 2             |
+| Jean Grey        | 8.80 | 2             |
+| John Doe         | 8.70 | 2             |
+| Diana Prince     | 8.40 | 2             |
+| Natasha Romanoff | 8.00 | 3             |
+| Logan Howlett    | 7.70 | 3             |
+| Steve Rogers     | 7.50 | 3             |
+| Wanda Maximoff   | 7.20 | 3             |
+| Clark Kent       | 6.90 | 4             |
+| Barry Allen      | 6.50 | 4             |
+| Scott Lang       | 5.80 | 4             |
+
+---
+**Query #4**
+
+    -- 44. Find percentage rank of students based on CGPA.
+    
+    SELECT student_name,
+           cgpa,
+           PERCENT_RANK() OVER (
+               ORDER BY cgpa
+           ) AS percentage_rank
+    FROM Student;
+
+| student_name     | cgpa | percentage_rank     |
+| ---------------- | ---- | ------------------- |
+| Scott Lang       | 5.80 | 0                   |
+| Barry Allen      | 6.50 | 0.07142857142857142 |
+| Clark Kent       | 6.90 | 0.14285714285714285 |
+| Wanda Maximoff   | 7.20 | 0.21428571428571427 |
+| Steve Rogers     | 7.50 | 0.2857142857142857  |
+| Logan Howlett    | 7.70 | 0.35714285714285715 |
+| Natasha Romanoff | 8.00 | 0.42857142857142855 |
+| Diana Prince     | 8.40 | 0.5                 |
+| John Doe         | 8.70 | 0.5714285714285714  |
+| Jean Grey        | 8.80 | 0.6428571428571429  |
+| Mary Jane        | 9.10 | 0.7142857142857143  |
+| Bruce Wayne      | 9.50 | 0.7857142857142857  |
+| Tony Stark       | 9.80 | 0.8571428571428571  |
+| Peter Parker     |      | 0.9285714285714286  |
+|                  |      | 0.9285714285714286  |
+
+---
+**Query #5**
+
+    -- 45. Display cumulative distribution of salaries.
+    
+    SELECT staff_name,
+           salary,
+           CUME_DIST() OVER (
+               ORDER BY salary
+           ) AS cumulative_distribution
+    FROM Staff;
+
+| staff_name    | salary    | cumulative_distribution |
+| ------------- | --------- | ----------------------- |
+|               | 50000.00  | 0.1                     |
+| David Lee     | 55000.00  | 0.2                     |
+| Henry Ford    | 65000.00  | 0.3                     |
+| Bob Smith     | 82000.00  | 0.4                     |
+| Charlie Brown | 91000.00  | 0.5                     |
+| Alice Johnson | 95000.00  | 0.6                     |
+| Ivy Clark     | 98000.00  | 0.7                     |
+| Eva Green     | 99000.00  | 0.8                     |
+| Grace Miller  | 120000.00 | 0.9                     |
+| Frank Hall    |           | 1                       |
+
+---
+**Query #6**
+
+    -- 46. Find subjects where a student's marks
+    -- are above subject average.
+    
+    SELECT *
+    FROM (
+        SELECT s.student_name,
+               sub.subject_name,
+               m.marks,
+               AVG(m.marks) OVER (
+                   PARTITION BY sub.subject_name
+               ) AS subject_average
+        FROM Student s
+        JOIN Mark m
+        ON s.student_id = m.student_id
+        JOIN Subject sub
+        ON m.subject_id = sub.subject_id
+    ) subject_data
+    WHERE marks > subject_average;
+
+| student_name     | subject_name            | marks | subject_average     |
+| ---------------- | ----------------------- | ----- | ------------------- |
+| Tony Stark       | Artificial Intelligence | 97    | 70.5000000000000000 |
+| Tony Stark       | Database Systems        | 99    | 93.2500000000000000 |
+| Mary Jane        | Database Systems        | 95    | 93.2500000000000000 |
+| Bruce Wayne      | Digital Electronics     | 98    | 76.0000000000000000 |
+| Jean Grey        | Linear Algebra          | 90    | 75.3333333333333333 |
+| Natasha Romanoff | Machine Design          | 81    | 73.5000000000000000 |
+| Mary Jane        | Operating Systems       | 89    | 82.0000000000000000 |
+| Bruce Wayne      | Signals and Systems     | 94    | 77.5000000000000000 |
+
+---
+**Query #7**
+
+    -- 47. Find departments whose average staff salary
+    -- is higher than overall average salary.
+    
+    SELECT d.department_name,
+           AVG(st.salary) AS department_average_salary
+    FROM Department d
+    JOIN Staff st
+    ON d.department_id = st.department_id
+    GROUP BY d.department_name
+    HAVING AVG(st.salary) >
+    (
+        SELECT AVG(salary)
+        FROM Staff
+    );
+
+| department_name  | department_average_salary |
+| ---------------- | ------------------------- |
+| Computer Science | 88500.000000000000        |
+| Electronics      | 99000.000000000000        |
+| Civil            | 120000.000000000000       |
+
+---
+**Query #8**
+
+    -- 48. Display students who scored above
+    -- department average marks.
+    
+    SELECT *
+    FROM (
+        SELECT s.student_name,
+               d.department_name,
+               m.marks,
+               AVG(m.marks) OVER (
+                   PARTITION BY d.department_name
+               ) AS department_average
+        FROM Student s
+        JOIN Department d
+        ON s.department_id = d.department_id
+        JOIN Mark m
+        ON s.student_id = m.student_id
+    ) department_data
+    WHERE marks > department_average;
+
+| student_name     | department_name  | marks | department_average  |
+| ---------------- | ---------------- | ----- | ------------------- |
+| Mary Jane        | Computer Science | 95    | 90.5714285714285714 |
+| John Doe         | Computer Science | 91    | 90.5714285714285714 |
+| Tony Stark       | Computer Science | 99    | 90.5714285714285714 |
+| Tony Stark       | Computer Science | 97    | 90.5714285714285714 |
+| Bruce Wayne      | Electronics      | 98    | 76.7500000000000000 |
+| Bruce Wayne      | Electronics      | 94    | 76.7500000000000000 |
+| Wanda Maximoff   | Mathematics      | 71    | 68.0000000000000000 |
+| Natasha Romanoff | Mechanical       | 81    | 73.0000000000000000 |
+
+---
+**Query #9**
+
+    -- 49. Find the 3rd highest mark using DENSE_RANK().
+    
+    SELECT *
+    FROM (
+        SELECT s.student_name,
+               m.marks,
+               DENSE_RANK() OVER (
+                   ORDER BY m.marks DESC
+               ) AS mark_rank
+        FROM Student s
+        JOIN Mark m
+        ON s.student_id = m.student_id
+    ) ranked_marks
+    WHERE mark_rank = 3;
+
+| student_name | marks | mark_rank |
+| ------------ | ----- | --------- |
+| Bruce Wayne  | 98    | 3         |
+
+---
+**Query #10**
+
+    -- 50. Generate report showing:
+    -- student name, department, subject,
+    -- exam type, marks, department average,
+    -- and overall rank.
+    
+    SELECT s.student_name,
+           d.department_name,
+           sub.subject_name,
+           m.exam_type,
+           m.marks,
+    
+           AVG(m.marks) OVER (
+               PARTITION BY d.department_name
+           ) AS department_average,
+    
+           RANK() OVER (
+               ORDER BY m.marks DESC
+           ) AS overall_rank
+    
+    FROM Student s
+    
+    JOIN Department d
+    ON s.department_id = d.department_id
+    
+    JOIN Mark m
+    ON s.student_id = m.student_id
+    
+    JOIN Subject sub
+    ON m.subject_id = sub.subject_id;
+
+| student_name     | department_name  | subject_name            | exam_type | marks | department_average  | overall_rank |
+| ---------------- | ---------------- | ----------------------- | --------- | ----- | ------------------- | ------------ |
+| Logan Howlett    | Biotechnology    |                         | Final     | 73    | 73.0000000000000000 | 14           |
+| Peter Parker     | Civil            | Structural Engineering  | Final     |       | 87.0000000000000000 | 1            |
+| Diana Prince     | Civil            | Structural Engineering  | Mid       | 87    | 87.0000000000000000 | 11           |
+| Mary Jane        | Computer Science | Database Systems        | Mid       | 95    | 90.5714285714285714 | 5            |
+| Tony Stark       | Computer Science | Database Systems        | Final     | 99    | 90.5714285714285714 | 2            |
+| John Doe         | Computer Science | Operating Systems       | Mid       | 75    | 90.5714285714285714 | 13           |
+| John Doe         | Computer Science | Database Systems        | Final     | 91    | 90.5714285714285714 | 7            |
+| Tony Stark       | Computer Science | Artificial Intelligence | Mid       | 97    | 90.5714285714285714 | 4            |
+| Mary Jane        | Computer Science | Operating Systems       | Final     | 89    | 90.5714285714285714 | 9            |
+| John Doe         | Computer Science | Database Systems        | Mid       | 88    | 90.5714285714285714 | 10           |
+| Bruce Wayne      | Electronics      | Digital Electronics     | Mid       | 98    | 76.7500000000000000 | 3            |
+| Bruce Wayne      | Electronics      | Signals and Systems     | Final     | 94    | 76.7500000000000000 | 6            |
+| Clark Kent       | Electronics      | Digital Electronics     | Mid       | 54    | 76.7500000000000000 | 20           |
+| Clark Kent       | Electronics      | Signals and Systems     | Final     | 61    | 76.7500000000000000 | 19           |
+| Wanda Maximoff   | Mathematics      | Linear Algebra          | Mid       | 71    | 68.0000000000000000 | 16           |
+| Barry Allen      | Mathematics      | Linear Algebra          | Final     | 65    | 68.0000000000000000 | 18           |
+| Steve Rogers     | Mechanical       | Thermodynamics          | Final     | 72    | 73.0000000000000000 | 15           |
+| Steve Rogers     | Mechanical       | Machine Design          | Mid       | 66    | 73.0000000000000000 | 17           |
+| Natasha Romanoff | Mechanical       | Machine Design          | Final     | 81    | 73.0000000000000000 | 12           |
+| Jean Grey        |                  | Linear Algebra          | Mid       | 90    | 90.0000000000000000 | 8            |
+
+---
+
+[View on DB Fiddle](https://www.db-fiddle.com/f/iMMvBDxNWo7cH6Tt3dmMZL/5)
