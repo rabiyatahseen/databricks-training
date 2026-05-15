@@ -1,8 +1,4 @@
--- =========================================
 -- CMS QUESTIONS 1 - 10
--- Corrected according to your schema
--- =========================================
-
 
 -- 1. List all students along with their department names.
 
