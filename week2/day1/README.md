@@ -46,7 +46,7 @@ Platform used for SQL practice:
 https://www.db-fiddle.com/
 
 My session link:
-https://www.db-fiddle.com/f/iMMvBDxNWo7cH6Tt3dmMZL/0
+https://www.db-fiddle.com/f/iMMvBDxNWo7cH6Tt3dmMZL/1
 
 ## 🚀 Conclusion
 
