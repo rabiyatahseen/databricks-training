@@ -87,6 +87,7 @@ week1/
 ├── day3/
 ├── day4/
 └── day5/
+|__ day6/
 ```
 
 Each day folder contains:
@@ -129,6 +130,12 @@ Each day folder contains:
 * Practiced advanced Window Functions and CTEs
 * Worked with ranking, running totals, moving averages, and recursive CTEs
 * Performed analytical SQL reporting using PostgreSQL
+  
+## ✅ Day 6
+
+* Practiced remaining advanced Window Functions and CTEs
+* Worked with remaining ranking, running totals, moving averages, and recursive CTEs
+* Performed analytical SQL reporting using PostgreSQL which are left to complete
 
 ---
 
@@ -165,6 +172,6 @@ This platform was used for:
 
 # 🚀 Conclusion
 
-Week 1 helped me build a strong foundation in SQL and database concepts. Through continuous practice and hands-on assignments, I improved my understanding of query writing, relational databases, joins, analytical SQL functions, and reporting techniques. This repository documents my learning progress and practical SQL exercises completed during the training program.
+Week 1 I have learnt all the basics that are required. and build a strong foundation in SQL and database concepts. Through continuous practice and hands-on assignments, I improved my understanding of query writing, relational databases, joins, analytical SQL functions, and reporting techniques. This repository documents my learning progress and practical SQL exercises completed during the training program.
 
 
