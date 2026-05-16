@@ -1,0 +1,1385 @@
+**Schema (PostgreSQL v9.4)**
+
+    CREATE TABLE employee_payments (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(50),
+    department VARCHAR(30),
+    base_salary DECIMAL(10,2),
+    bonus DECIMAL(10,2),
+    joining_date DATE
+    );
+    INSERT INTO employee_payments VALUES
+    (1,'karthik','Data',75000.75,5000.50,'2019-03-15'),
+    (2,'veena','HR',65000.40,4000.25,'2021-06-20'),
+    (3,'ravi','Data',85000.90,6000.75,'2016-01-10'),
+    (4,'anil','Finance',70000.10,NULL,'2020-09-01'),
+    (5,'suresh','HR',60000.55,3000.30,'2022-11-25');
+    
+    CREATE TABLE orders_delivery (
+    order_id INT,
+    customer_name VARCHAR(50),
+    order_date DATE,
+    delivery_date DATE,
+    order_amount DECIMAL(10,2)
+    );
+    INSERT INTO orders_delivery VALUES
+    (101,'rajesh','2025-01-01','2025-01-05',12500.75),
+    (102,'meena','2025-01-10','2025-01-10',8400.40),
+    (103,'arun','2025-01-15','2025-01-20',15600.90),
+    (104,'pooja','2025-01-18',NULL,9200.10);
+    
+    CREATE TABLE customer_spending (
+    cust_id INT,
+    cust_name VARCHAR(50),
+    city VARCHAR(30),
+    purchase_amount DECIMAL(10,2),
+    purchase_date DATE
+    );
+    INSERT INTO customer_spending VALUES
+    (1,'amit','mumbai',12000.75,'2024-12-01'),
+    (2,'neha','delhi',8500.40,'2024-12-15'),
+    (3,'rohit','mumbai',15500.90,'2024-11-20'),
+    (4,'kavya','chennai',6000.10,'2024-10-05');
+    
+    CREATE TABLE subscriptions (
+    user_id INT,
+    user_email VARCHAR(100),
+    start_date DATE,
+    end_date DATE,
+    subscription_fee DECIMAL(10,2)
+    );
+    INSERT INTO subscriptions VALUES
+    (1,'karthik@gmail.com','2024-01-01','2025-01-01',12000.50),
+    (2,'veena@yahoo.com','2024-06-15','2024-12-15',8500.75),
+    (3,'ravi@hotmail.com','2023-03-01','2024-03-01',15000.90);
+    
+    CREATE TABLE loan_details (
+    loan_id INT,
+    customer_name VARCHAR(50),
+    loan_amount DECIMAL(12,2),
+    interest_rate DECIMAL(5,2),
+    loan_start DATE
+    );
+    INSERT INTO loan_details VALUES
+    (201,'suresh',500000.75,8.5,'2022-01-10'),
+    (202,'mahesh',750000.40,9.2,'2021-05-20'),
+    (203,'anita',300000.90,7.8,'2023-07-01');
+    
+    CREATE TABLE attendance (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    total_days INT,
+    present_days INT,
+    record_date DATE
+    );
+    INSERT INTO attendance VALUES
+    (1,'karthik',30,28,'2025-01-31'),
+    (2,'veena',30,22,'2025-01-31'),
+    (3,'ravi',30,18,'2025-01-31');
+    
+    CREATE TABLE product_sales (
+    product_id INT,
+    product_name VARCHAR(50),
+    mrp DECIMAL(10,2),
+    selling_price DECIMAL(10,2),
+    sale_date DATE
+    );
+    INSERT INTO product_sales VALUES
+    (1,'Laptop',75000.75,68000.50,'2025-01-10'),
+    (2,'Mobile',35000.40,33000.25,'2025-01-12'),
+    (3,'Tablet',25000.90,26000.75,'2025-01-15');
+    CREATE TABLE insurance_policies (
+    policy_id INT,
+    holder_name VARCHAR(50),
+    premium_amount DECIMAL(10,2),
+    policy_start DATE,
+    policy_end DATE
+    );
+    INSERT INTO insurance_policies VALUES
+    (301,'arjun',12000.50,'2023-01-01','2026-01-01'),
+    (302,'megha',8500.75,'2022-06-15','2025-06-15'),
+    (303,'vinod',15000.90,'2021-03-01','2024-03-01');
+    
+    CREATE TABLE salary_revision (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    current_salary DECIMAL(10,2),
+    rating INT,
+    last_hike DATE
+    );
+    INSERT INTO salary_revision VALUES
+    (1,'karthik',75000.75,5,'2023-01-01'),
+    (2,'veena',65000.40,4,'2024-01-01'),
+    (3,'ravi',85000.90,3,'2022-01-01');
+    CREATE TABLE bank_accounts (
+    account_id INT,
+    customer_name VARCHAR(50),
+    balance DECIMAL(12,2),
+    last_transaction DATE,
+    branch VARCHAR(30)
+    );
+    INSERT INTO bank_accounts VALUES
+    (501,'ramesh',125000.75,'2024-12-20','hyderabad'),
+    (502,'sita',8500.40,'2023-06-15','delhi'),
+    (503,'manoj',-2500.90,'2025-01-05','mumbai');
+    CREATE TABLE salary_audit (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    tax_percent DECIMAL(5,2),
+    last_revision DATE
+    );
+    INSERT INTO salary_audit VALUES
+    (1,'karthik',75000.75,10.5,'2022-01-15'),
+    (2,'veena',65000.40,18.0,'2023-06-01'),
+    (3,'ravi',85000.90,25.0,'2020-11-20');
+    CREATE TABLE bonus_monitor (
+    emp_code INT,
+    emp_name VARCHAR(50),
+    base_salary DECIMAL(10,2),
+    bonus DECIMAL(10,2),
+    bonus_date DATE
+    );
+    INSERT INTO bonus_monitor VALUES
+    (101,'Anil',70000.10,30000.00,'2025-01-10'),
+    (102,'Suresh',60000.55,3000.30,'2024-03-15'),
+    (103,'Ravi',85000.90,15000.75,'2023-12-01');
+    CREATE TABLE employee_experience (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    joining_date DATE,
+    declared_experience INT,
+    salary DECIMAL(10,2)
+    );
+    INSERT INTO employee_experience VALUES
+    (1,'Veena','2018-07-01',4,65000.40),
+    (2,'Ravi','2014-01-10',12,85000.90),
+    (3,'Anil','2020-09-01',3,70000.10);
+    CREATE TABLE salary_digits (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    credit_date DATE
+    );
+    INSERT INTO salary_digits VALUES
+    (1,'Karthik',75000.75,'2025-01-01'),
+    (2,'Veena',65000.40,'2025-01-02'),
+    (3,'Suresh',60000.55,'2025-01-03');
+    CREATE TABLE payroll_control (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    payment_date DATE
+    );
+    INSERT INTO payroll_control VALUES
+    (1,'Ravi',85000.90,'2025-01-15'),
+    (2,'Anil',70000.10,'2025-01-16'),
+    (3,'Veena',65000.40,'2025-01-17');
+    CREATE TABLE inflation_watch (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    last_hike DATE
+    );
+    INSERT INTO inflation_watch VALUES
+    (1,'Karthik',75000.75,'2019-01-01'),
+    (2,'Veena',65000.40,'2022-01-01'),
+    (3,'Ravi',85000.90,'2017-01-01');
+    CREATE TABLE salary_integrity (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    record_date DATE
+    );
+    INSERT INTO salary_integrity VALUES
+    (1,'Anil',-70000.10,'2025-01-10'),
+    (2,'Veena',65000.40,'2025-01-10'),
+    (3,'Ravi',0.00,'2025-01-10');
+    CREATE TABLE name_salary (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    join_date DATE
+    );
+    INSERT INTO name_salary VALUES
+    (1,'Karthik',75000.75,'2019-03-15'),
+    (2,'Veena',65000.40,'2021-06-20'),
+    (3,'Ravi',85000.90,'2016-01-10');
+    CREATE TABLE salary_monthly (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    paid_date DATE
+    );
+    INSERT INTO salary_monthly VALUES
+    (1,'Karthik',75000.75,'2025-01-31'),
+    (2,'Veena',65000.40,'2025-02-28'),
+    (3,'Ravi',85000.90,'2025-03-31');
+    CREATE TABLE digit_audit (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    audit_date DATE
+    );
+    INSERT INTO digit_audit VALUES
+    (1,'Anil',70000.10,'2025-01-01'),
+    (2,'Veena',65000.40,'2025-01-02');
+    CREATE TABLE salary_credit_audit (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    credit_date DATE,
+    bank_code VARCHAR(10)
+    );
+    
+    INSERT INTO salary_credit_audit VALUES
+    (1,'Karthik',75000.75,'2025-01-04','HDFC01'),
+    (2,'Veena',65000.40,'2025-01-06','ICIC02'),
+    (3,'Ravi',85000.90,'2025-01-05','SBIN03'),
+    (4,'Anil',70000.10,'2025-01-07','AXIS04'),
+    (5,'Suresh',60000.55,'2025-01-11','HDFC01');
+    
+    CREATE TABLE salary_time_drift (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    credit_ts TIMESTAMP
+    );
+    
+    INSERT INTO salary_time_drift VALUES
+    (1,'Karthik',75000.75,'2025-01-10 23:45:00'),
+    (2,'Veena',65000.40,'2025-01-10 09:15:00'),
+    (3,'Ravi',85000.90,'2025-01-11 00:10:00'),
+    (4,'Anil',70000.10,'2025-01-09 18:30:00'),
+    (5,'Suresh',60000.55,'2025-01-10 02:50:00');
+    
+    CREATE TABLE salary_precision (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,4),
+    record_date DATE
+    );
+    
+    INSERT INTO salary_precision VALUES
+    (1,'Karthik',75000.7567,'2025-01-01'),
+    (2,'Veena',65000.4044,'2025-01-02'),
+    (3,'Ravi',85000.9099,'2025-01-03'),
+    (4,'Anil',70000.1001,'2025-01-04'),
+    (5,'Suresh',60000.5555,'2025-01-05');
+    
+    CREATE TABLE salary_growth (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    base_salary DECIMAL(10,2),
+    growth_rate DECIMAL(5,2),
+    last_hike DATE
+    );
+    
+    INSERT INTO salary_growth VALUES
+    (1,'Karthik',75000.75,1.08,'2019-01-01'),
+    (2,'Veena',65000.40,1.05,'2021-01-01'),
+    (3,'Ravi',85000.90,1.12,'2017-01-01'),
+    (4,'Anil',70000.10,1.03,'2022-01-01'),
+    (5,'Suresh',60000.55,1.06,'2020-01-01');
+    
+    CREATE TABLE salary_symmetry (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    processed_date DATE
+    );
+    
+    INSERT INTO salary_symmetry VALUES
+    (1,'Karthik',75557.75,'2025-01-15'),
+    (2,'Veena',64446.40,'2025-01-16'),
+    (3,'Ravi',85858.90,'2025-01-17'),
+    (4,'Anil',70007.10,'2025-01-18'),
+    (5,'Suresh',60000.55,'2025-01-19');
+    
+    CREATE TABLE leap_salary (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    credit_date DATE
+    );
+    
+    INSERT INTO leap_salary VALUES
+    (1,'Karthik',75000.75,'2024-02-29'),
+    (2,'Veena',65000.40,'2025-02-28'),
+    (3,'Ravi',85000.90,'2020-02-29'),
+    (4,'Anil',70000.10,'2023-02-28'),
+    (5,'Suresh',60000.55,'2024-02-28');
+    
+    CREATE TABLE fiscal_salary (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    credit_date DATE
+    );
+    
+    INSERT INTO fiscal_salary VALUES
+    (1,'Karthik',75000.75,'2025-03-31'),
+    (2,'Veena',65000.40,'2025-04-01'),
+    (3,'Ravi',85000.90,'2024-03-30'),
+    (4,'Anil',70000.10,'2024-04-02'),
+    (5,'Suresh',60000.55,'2025-03-29');
+    
+    CREATE TABLE salary_sampling (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    record_date DATE
+    );
+    
+    INSERT INTO salary_sampling VALUES
+    (1,'Karthik',75000.75,'2025-01-01'),
+    (2,'Veena',65000.40,'2025-01-02'),
+    (3,'Ravi',85000.90,'2025-01-03'),
+    (4,'Anil',70000.10,'2025-01-04'),
+    (5,'Suresh',60000.55,'2025-01-05'),
+    (6,'Amit',72000.60,'2025-01-06'),
+    (7,'Neha',68000.80,'2025-01-07');
+    
+    CREATE TABLE salary_ascii (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    join_date DATE
+    );
+    
+    INSERT INTO salary_ascii VALUES
+    (1,'Karthik',75000.75,'2019-03-15'),
+    (2,'Veena',65000.40,'2021-06-20'),
+    (3,'Ravi',85000.90,'2016-01-10'),
+    (4,'Anil',70000.10,'2020-09-01'),
+    (5,'Suresh',60000.55,'2022-11-25');
+    
+    CREATE TABLE salary_calendar (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary DECIMAL(10,2),
+    credit_date DATE
+    );
+    
+    INSERT INTO salary_calendar VALUES
+    (1,'Karthik',75000.75,'2025-01-15'),
+    (2,'Veena',65000.40,'2025-02-14'),
+    (3,'Ravi',85000.90,'2025-03-31'),
+    (4,'Anil',70000.10,'2025-04-04'),
+    (5,'Suresh',60000.55,'2025-05-05');
+    CREATE TABLE employee_login (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    login_time TIMESTAMP,
+    logout_time TIMESTAMP
+    );
+    
+    INSERT INTO employee_login VALUES
+    (1,'Karthik','2025-01-15 09:05:00','2025-01-15 18:10:00'),
+    (2,'Veena','2025-01-14 10:30:00','2025-01-14 16:00:00'),
+    (3,'Ravi','2025-01-13 09:00:00','2025-01-13 20:00:00'),
+    (4,'Anil','2025-01-12 11:00:00','2025-01-12 14:00:00'),
+    (5,'Suresh','2025-01-11 09:15:00','2025-01-11 17:00:00');
+    CREATE TABLE attendance_log (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    login_date DATE,
+    login_time TIME,
+    logout_time TIME
+    );
+    
+    INSERT INTO attendance_log VALUES
+    (1,'Karthik','2025-01-14','09:00:00','18:00:00'),
+    (2,'Karthik','2025-01-13','09:15:00','17:30:00'),
+    (3,'Veena','2025-01-12','10:00:00','15:00:00'),
+    (4,'Ravi','2025-01-10','09:00:00','19:00:00'),
+    (5,'Anil','2025-01-08','11:00:00','14:00:00');
+    CREATE TABLE weekend_monitor (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    work_date DATE,
+    login_time TIME,
+    logout_time TIME
+    );
+    
+    INSERT INTO weekend_monitor VALUES
+    (1,'Ravi','2025-01-11','09:00:00','21:00:00'),
+    (2,'Veena','2025-01-12','10:00:00','13:00:00'),
+    (3,'Karthik','2025-01-10','09:00:00','18:00:00'),
+    (4,'Anil','2025-01-09','11:00:00','14:00:00');
+    CREATE TABLE login_discipline (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    login_datetime TIMESTAMP,
+    logout_datetime TIMESTAMP
+    );
+    
+    INSERT INTO login_discipline VALUES
+    (1,'Karthik','2025-01-15 08:55:00','2025-01-15 18:10:00'),
+    (2,'Veena','2025-01-15 10:45:00','2025-01-15 16:00:00'),
+    (3,'Ravi','2025-01-15 09:00:00','2025-01-15 20:30:00'),
+    (4,'Anil','2025-01-15 11:30:00','2025-01-15 14:00:00');
+    CREATE TABLE performance_tracker (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    work_date DATE,
+    login_time TIME,
+    logout_time TIME
+    );
+    
+    INSERT INTO performance_tracker VALUES
+    (1,'Karthik','2025-01-09','09:00:00','18:00:00'),
+    (2,'Karthik','2025-01-10','09:10:00','17:50:00'),
+    (3,'Veena','2025-01-05','10:00:00','15:00:00'),
+    (4,'Ravi','2025-01-14','09:00:00','19:00:00'),
+    (5,'Anil','2025-01-03','11:00:00','14:00:00');
+    
+
+---
+
+**Query #1**
+
+    --1.
+    SELECT 
+        emp_id,
+        UPPER(emp_name) AS upper_name,
+        LOWER(emp_name) AS lower_name,
+        INITCAP(emp_name) AS proper_name,
+        base_salary + COALESCE(bonus,0) AS total_income,
+        ROUND(base_salary + COALESCE(bonus,0)) AS rounded_income,
+        EXTRACT(YEAR FROM joining_date) AS joining_year,
+        CASE
+            WHEN joining_date <= '2018-01-01' THEN 'Senior'
+            WHEN joining_date <= '2021-01-01' THEN 'Mid'
+            ELSE 'Junior'
+        END AS classification
+    FROM employee_payments;
+
+| emp_id | upper_name | lower_name | proper_name | total_income | rounded_income | joining_year | classification |
+| ------ | ---------- | ---------- | ----------- | ------------ | -------------- | ------------ | -------------- |
+| 1      | KARTHIK    | karthik    | Karthik     | 80001.25     | 80001          | 2019         | Mid            |
+| 2      | VEENA      | veena      | Veena       | 69000.65     | 69001          | 2021         | Junior         |
+| 3      | RAVI       | ravi       | Ravi        | 91001.65     | 91002          | 2016         | Senior         |
+| 4      | ANIL       | anil       | Anil        | 70000.10     | 70000          | 2020         | Mid            |
+| 5      | SURESH     | suresh     | Suresh      | 63000.85     | 63001          | 2022         | Junior         |
+
+---
+**Query #2**
+
+    --2.
+    SELECT 
+        order_id,
+    
+        UPPER(customer_name) AS customer_name,
+    
+        COALESCE(delivery_date, CURRENT_DATE) - order_date 
+        AS delivery_days,
+    
+        TRUNC(order_amount,1) AS order_amount,
+    
+        CASE
+            WHEN delivery_date IS NULL THEN 'Pending'
+            WHEN delivery_date = order_date THEN 'Same-day'
+            WHEN delivery_date - order_date > 3 THEN 'Delayed'
+            ELSE 'On Time'
+        END AS status
+    
+    FROM orders_delivery;
+
+| order_id | customer_name | delivery_days | order_amount | status   |
+| -------- | ------------- | ------------- | ------------ | -------- |
+| 101      | RAJESH        | 4             | 12500.7      | Delayed  |
+| 102      | MEENA         | 0             | 8400.4       | Same-day |
+| 103      | ARUN          | 5             | 15600.9      | Delayed  |
+| 104      | POOJA         | 483           | 9200.1       | Pending  |
+
+---
+**Query #3**
+
+    -- QUESTION 3: Customer Spending Pattern
+    SELECT 
+        INITCAP(cust_name) AS customer_name,
+        TO_CHAR(purchase_date, 'Month') AS purchase_month,
+        ROUND(purchase_amount) AS rounded_amount,
+        ABS(purchase_amount) AS absolute_amount,
+        CASE
+            WHEN purchase_amount > 15000 THEN 'High Spender'
+            WHEN purchase_amount BETWEEN 8000 AND 15000 THEN 'Medium Spender'
+            ELSE 'Low Spender'
+        END AS spending_type
+    FROM customer_spending;
+
+| customer_name | purchase_month | rounded_amount | absolute_amount | spending_type  |
+| ------------- | -------------- | -------------- | --------------- | -------------- |
+| Amit          | December       | 12001          | 12000.75        | Medium Spender |
+| Neha          | December       | 8500           | 8500.40         | Medium Spender |
+| Rohit         | November       | 15501          | 15500.90        | High Spender   |
+| Kavya         | October        | 6000           | 6000.10         | Low Spender    |
+
+---
+**Query #4**
+
+    -- QUESTION 4: Subscription Validity Check
+    SELECT 
+        user_id,
+        SPLIT_PART(user_email, '@', 2) AS email_domain,
+        EXTRACT(YEAR FROM AGE(end_date, start_date)) * 12 +
+        EXTRACT(MONTH FROM AGE(end_date, start_date))
+        AS duration_months,
+        TO_CHAR(subscription_fee, '99,99,999.99') AS formatted_fee,
+        end_date - CURRENT_DATE AS remaining_days,
+        CASE
+            WHEN end_date < CURRENT_DATE THEN 'Expired'
+            WHEN end_date - CURRENT_DATE <= 30 THEN 'Expiring Soon'
+            ELSE 'Active'
+        END AS subscription_status
+    FROM subscriptions;
+
+| user_id | email_domain | duration_months | formatted_fee | remaining_days | subscription_status |
+| ------- | ------------ | --------------- | ------------- | -------------- | ------------------- |
+| 1       | gmail.com    | 12              |     12,000.50 | -500           | Expired             |
+| 2       | yahoo.com    | 6               |      8,500.75 | -517           | Expired             |
+| 3       | hotmail.com  | 12              |     15,000.90 | -806           | Expired             |
+
+---
+**Query #5**
+
+    -- 5.
+    SELECT 
+        loan_id,
+        UPPER(customer_name) AS customer_name,
+        POWER((1 + interest_rate / 100), 1.0/12) - 1 
+        AS monthly_interest,
+        EXTRACT(YEAR FROM AGE(CURRENT_DATE, loan_start)) 
+        AS years_since_loan,
+        ROUND(loan_amount / 12) AS emi,
+        CASE
+            WHEN interest_rate > 9 THEN 'High Risk'
+            WHEN interest_rate BETWEEN 8 AND 9 THEN 'Medium Risk'
+            ELSE 'Low Risk'
+        END AS risk_category
+    FROM loan_details;
+
+| loan_id | customer_name | monthly_interest       | years_since_loan | emi   | risk_category |
+| ------- | ------------- | ---------------------- | ---------------- | ----- | ------------- |
+| 201     | SURESH        | 0.00682149336596221953 | 4                | 41667 | Medium Risk   |
+| 202     | MAHESH        | 0.00736120118695529747 | 4                | 62500 | High Risk     |
+| 203     | ANITA         | 0.00627858423522722700 | 2                | 25000 | Low Risk      |
+
+---
+**Query #6**
+
+    --6.
+    SELECT 
+        LOWER(emp_name) AS employee_name,
+        ROUND((present_days * 100.0) / total_days) 
+        AS attendance_percentage,
+        TO_CHAR(record_date, 'Month') AS month_name,
+        total_days - present_days AS absent_days,
+        CASE
+            WHEN (present_days * 100.0) / total_days >= 90 
+                THEN 'Excellent'
+            WHEN (present_days * 100.0) / total_days 
+                 BETWEEN 75 AND 89 
+                THEN 'Average'
+            ELSE 'Poor'
+        END AS attendance_status
+    FROM attendance;
+
+| employee_name | attendance_percentage | month_name | absent_days | attendance_status |
+| ------------- | --------------------- | ---------- | ----------- | ----------------- |
+| karthik       | 93                    | January    | 2           | Excellent         |
+| veena         | 73                    | January    | 8           | Poor              |
+| ravi          | 60                    | January    | 12          | Poor              |
+
+---
+**Query #7**
+
+    --7.
+    SELECT 
+        INITCAP(product_name) AS product_name,
+        ABS(mrp - selling_price) AS discount_amount,
+        ROUND(((mrp - selling_price) * 100.0) / mrp, 2) 
+        AS discount_percentage,
+        TO_CHAR(sale_date, 'Day') AS sale_day,
+        CASE
+            WHEN selling_price < mrp THEN 'Valid Discount'
+            WHEN selling_price > mrp THEN 'Overpriced'
+            ELSE 'No Discount'
+        END AS discount_status
+    FROM product_sales;
+
+| product_name | discount_amount | discount_percentage | sale_day  | discount_status |
+| ------------ | --------------- | ------------------- | --------- | --------------- |
+| Laptop       | 7000.25         | 9.33                | Friday    | Valid Discount  |
+| Mobile       | 2000.15         | 5.71                | Sunday    | Valid Discount  |
+| Tablet       | 999.85          | -4.00               | Wednesday | Overpriced      |
+
+---
+**Query #8**
+
+    --8.
+    SELECT 
+        UPPER(holder_name) AS holder_name,
+        EXTRACT(YEAR FROM AGE(policy_end, policy_start)) 
+        AS policy_duration_years,
+        policy_end - CURRENT_DATE AS remaining_days,
+        ROUND(premium_amount) AS rounded_premium,
+        CASE
+            WHEN policy_end < CURRENT_DATE THEN 'Expired'
+            WHEN EXTRACT(YEAR FROM AGE(policy_end, policy_start)) >= 3 
+                THEN 'Long Term'
+            ELSE 'Mid Term'
+        END AS policy_status
+    FROM insurance_policies;
+
+| holder_name | policy_duration_years | remaining_days | rounded_premium | policy_status |
+| ----------- | --------------------- | -------------- | --------------- | ------------- |
+| ARJUN       | 3                     | -135           | 12001           | Expired       |
+| MEGHA       | 3                     | -335           | 8501            | Expired       |
+| VINOD       | 3                     | -806           | 15001           | Expired       |
+
+---
+**Query #9**
+
+    --9.
+    SELECT 
+        LOWER(emp_name) AS employee_name,
+        EXTRACT(YEAR FROM AGE(CURRENT_DATE, last_hike)) 
+        AS years_since_hike,
+        CASE
+            WHEN rating = 5 THEN current_salary * 0.20
+            WHEN rating = 4 THEN current_salary * 0.10
+            ELSE 0
+        END AS increment_amount,
+        ROUND(
+            current_salary +
+            CASE
+                WHEN rating = 5 THEN current_salary * 0.20
+                WHEN rating = 4 THEN current_salary * 0.10
+                ELSE 0
+            END
+        ) AS new_salary,
+        CASE
+            WHEN rating = 5 THEN 'High Increment'
+            WHEN rating = 4 THEN 'Moderate'
+            ELSE 'No Increment'
+        END AS increment_status
+    FROM salary_revision;
+
+| employee_name | years_since_hike | increment_amount | new_salary | increment_status |
+| ------------- | ---------------- | ---------------- | ---------- | ---------------- |
+| karthik       | 3                | 15000.1500       | 90001      | High Increment   |
+| veena         | 2                | 6500.0400        | 71500      | Moderate         |
+| ravi          | 4                | 0                | 85001      | No Increment     |
+
+---
+**Query #10**
+
+    --10.
+    SELECT 
+        account_id,
+        ABS(balance) AS absolute_balance,
+        CURRENT_DATE - last_transaction 
+        AS days_since_transaction,
+        INITCAP(branch) AS branch_name,
+        SIGN(balance) AS balance_sign,
+        CASE
+            WHEN balance < 0 THEN 'Overdrawn'
+            WHEN CURRENT_DATE - last_transaction > 365 THEN 'Dormant'
+            ELSE 'Active'
+        END AS account_status
+    FROM bank_accounts;
+
+| account_id | absolute_balance | days_since_transaction | branch_name | balance_sign | account_status |
+| ---------- | ---------------- | ---------------------- | ----------- | ------------ | -------------- |
+| 501        | 125000.75        | 512                    | Hyderabad   | 1            | Dormant        |
+| 502        | 8500.40          | 1066                   | Delhi       | 1            | Dormant        |
+| 503        | 2500.90          | 496                    | Mumbai      | -1           | Overdrawn      |
+
+---
+**Query #11**
+
+    -- L1-1
+    SELECT 
+        LOWER(emp_name) AS employee_name,
+    
+        ROUND(salary - (salary * tax_percent / 100)) 
+        AS net_salary,
+    
+        EXTRACT(YEAR FROM last_revision) 
+        AS revision_year,
+    
+        EXTRACT(YEAR FROM AGE(CURRENT_DATE, last_revision)) * 12 +
+        EXTRACT(MONTH FROM AGE(CURRENT_DATE, last_revision))
+        AS months_since_revision,
+    
+        CASE
+            WHEN tax_percent > 20 
+                 AND (
+                     EXTRACT(YEAR FROM AGE(CURRENT_DATE, last_revision)) * 12 +
+                     EXTRACT(MONTH FROM AGE(CURRENT_DATE, last_revision))
+                 ) > 24
+            THEN 'Tax Shock'
+    
+            WHEN tax_percent BETWEEN 15 AND 20
+            THEN 'Review Needed'
+    
+            ELSE 'Stable'
+        END AS status
+    
+    FROM salary_audit;
+
+| employee_name | net_salary | revision_year | months_since_revision | status        |
+| ------------- | ---------- | ------------- | --------------------- | ------------- |
+| karthik       | 67126      | 2022          | 52                    | Stable        |
+| veena         | 53300      | 2023          | 35                    | Review Needed |
+| ravi          | 63751      | 2020          | 65                    | Tax Shock     |
+
+---
+**Query #12**
+
+    --2.
+    SELECT 
+    INITCAP(emp_name) AS employee_name,
+    ROUND((bonus * 100.0) / base_salary,2) AS bonus_percentage,
+    TO_CHAR(bonus_date,'Day') AS bonus_day,
+    ABS(base_salary - bonus) AS salary_bonus_difference,
+    CASE
+        WHEN ((bonus * 100.0) / base_salary) > 30
+             AND TO_CHAR(bonus_date,'Day') IN ('Saturday ','Sunday   ')
+        THEN 'Suspicious'
+        WHEN ((bonus * 100.0) / base_salary) <= 20
+        THEN 'Normal'
+        ELSE 'Audit'
+    END AS status
+    FROM bonus_monitor;
+
+| employee_name | bonus_percentage | bonus_day | salary_bonus_difference | status |
+| ------------- | ---------------- | --------- | ----------------------- | ------ |
+| Anil          | 42.86            | Friday    | 40000.10                | Audit  |
+| Suresh        | 5.00             | Friday    | 57000.25                | Normal |
+| Ravi          | 17.65            | Friday    | 70000.15                | Normal |
+
+---
+**Query #13**
+
+    -- 3.
+    SELECT
+    UPPER(emp_name) AS employee_name,
+    EXTRACT(YEAR FROM AGE(CURRENT_DATE, joining_date)) AS actual_experience,
+    ABS(declared_experience - EXTRACT(YEAR FROM AGE(CURRENT_DATE, joining_date))) AS experience_difference,
+    FLOOR(salary) AS floor_salary,
+    CASE
+        WHEN declared_experience > EXTRACT(YEAR FROM AGE(CURRENT_DATE, joining_date))
+        THEN 'Overstated'
+        WHEN declared_experience < EXTRACT(YEAR FROM AGE(CURRENT_DATE, joining_date))
+        THEN 'Understated'
+        ELSE 'Matched'
+    END AS status
+    FROM employee_experience;
+
+| employee_name | actual_experience | experience_difference | floor_salary | status      |
+| ------------- | ----------------- | --------------------- | ------------ | ----------- |
+| VEENA         | 7                 | 3                     | 65000        | Understated |
+| RAVI          | 12                | 0                     | 85000        | Matched     |
+| ANIL          | 5                 | 2                     | 70000        | Understated |
+
+---
+**Query #14**
+
+    -- 4.
+    SELECT
+    RIGHT(emp_name,2) AS last_two_characters,
+    EXTRACT(DAY FROM credit_date) AS day_of_month,
+    TRUNC(salary) AS truncated_salary,
+    MOD(TRUNC(salary),10) AS salary_mod,
+    CASE
+        WHEN MOD(TRUNC(salary),10) = EXTRACT(DAY FROM credit_date)
+        THEN 'Pattern Match'
+        ELSE 'No Match'
+    END AS status
+    FROM salary_digits;
+
+| last_two_characters | day_of_month | truncated_salary | salary_mod | status   |
+| ------------------- | ------------ | ---------------- | ---------- | -------- |
+| ik                  | 1            | 75000            | 0          | No Match |
+| na                  | 2            | 65000            | 0          | No Match |
+| sh                  | 3            | 60000            | 0          | No Match |
+
+---
+**Query #15**
+
+    -- 5.
+    SELECT
+    LOWER(emp_name) AS employee_name,
+    TO_CHAR(payment_date,'Day') AS weekday,
+    ROUND(salary) AS rounded_salary,
+    MOD(ROUND(salary),2) AS salary_mod,
+    CASE
+        WHEN MOD(ROUND(salary),2) = 0
+             AND MOD(CAST(EXTRACT(DAY FROM payment_date) AS INT),2) <> 0
+        THEN 'Violation'
+        ELSE 'Compliant'
+    END AS status
+    FROM payroll_control;
+
+| employee_name | weekday   | rounded_salary | salary_mod | status    |
+| ------------- | --------- | -------------- | ---------- | --------- |
+| ravi          | Wednesday | 85001          | 1          | Compliant |
+| anil          | Thursday  | 70000          | 0          | Compliant |
+| veena         | Friday    | 65000          | 0          | Violation |
+
+---
+**Query #16**
+
+    --6.
+    SELECT
+    INITCAP(emp_name) AS employee_name,
+    EXTRACT(YEAR FROM AGE(CURRENT_DATE,last_hike)) AS years_since_hike,
+    POWER(EXTRACT(YEAR FROM AGE(CURRENT_DATE,last_hike)),2) AS power_value,
+    ROUND(salary * POWER(1.05,EXTRACT(YEAR FROM AGE(CURRENT_DATE,last_hike)))) AS salary_impact,
+    CASE
+        WHEN EXTRACT(YEAR FROM AGE(CURRENT_DATE,last_hike)) > 5
+        THEN 'High Inflation Risk'
+        WHEN EXTRACT(YEAR FROM AGE(CURRENT_DATE,last_hike)) BETWEEN 3 AND 5
+        THEN 'Moderate'
+        ELSE 'Low'
+    END AS status
+    FROM inflation_watch;
+
+| employee_name | years_since_hike | power_value | salary_impact | status              |
+| ------------- | ---------------- | ----------- | ------------- | ------------------- |
+| Karthik       | 7                | 49          | 105534        | High Inflation Risk |
+| Veena         | 4                | 16          | 79008         | Moderate            |
+| Ravi          | 9                | 81          | 131864        | High Inflation Risk |
+
+---
+**Query #17**
+
+    -- 7.
+    SELECT
+    UPPER(emp_name) AS employee_name,
+    EXTRACT(YEAR FROM record_date) AS record_year,
+    SIGN(salary) AS salary_sign,
+    ABS(salary) AS absolute_salary,
+    CASE
+        WHEN salary < 0
+        THEN 'Negative Error'
+        WHEN salary = 0
+        THEN 'Zero Salary'
+        ELSE 'Valid'
+    END AS status
+    FROM salary_integrity;
+
+| employee_name | record_year | salary_sign | absolute_salary | status         |
+| ------------- | ----------- | ----------- | --------------- | -------------- |
+| ANIL          | 2025        | -1          | 70000.10        | Negative Error |
+| VEENA         | 2025        | 1           | 65000.40        | Valid          |
+| RAVI          | 2025        | 0           | 0.00            | Zero Salary    |
+
+---
+**Query #18**
+
+    -- 8.
+    SELECT
+    LENGTH(emp_name) AS name_length,
+    EXTRACT(YEAR FROM AGE(CURRENT_DATE,join_date)) AS years_of_service,
+    ROUND(salary) AS rounded_salary,
+    ABS(LENGTH(emp_name) - EXTRACT(YEAR FROM AGE(CURRENT_DATE,join_date))) AS difference,
+    CASE
+        WHEN LENGTH(emp_name) > EXTRACT(YEAR FROM AGE(CURRENT_DATE,join_date))
+        THEN 'Name Bias'
+        ELSE 'Neutral'
+    END AS status
+    FROM name_salary;
+
+| name_length | years_of_service | rounded_salary | difference | status    |
+| ----------- | ---------------- | -------------- | ---------- | --------- |
+| 7           | 7                | 75001          | 0          | Neutral   |
+| 5           | 4                | 65000          | 1          | Name Bias |
+| 4           | 10               | 85001          | 6          | Neutral   |
+
+---
+**Query #19**
+
+    --9.
+    SELECT
+    TO_CHAR(paid_date,'Month') AS month_name,
+    CEIL(salary) AS ceil_salary,
+    CASE
+        WHEN paid_date = (DATE_TRUNC('MONTH',paid_date) + INTERVAL '1 MONTH - 1 day')
+        THEN 'Yes'
+        ELSE 'No'
+    END AS last_day_of_month,
+    CASE
+        WHEN paid_date = (DATE_TRUNC('MONTH',paid_date) + INTERVAL '1 MONTH - 1 day')
+        THEN 'End Month Spike'
+        ELSE 'Regular'
+    END AS status
+    FROM salary_monthly;
+
+| month_name | ceil_salary | last_day_of_month | status          |
+| ---------- | ----------- | ----------------- | --------------- |
+| January    | 75001       | Yes               | End Month Spike |
+| February   | 65001       | Yes               | End Month Spike |
+| March      | 85001       | Yes               | End Month Spike |
+
+---
+**Query #20**
+
+    --10.
+    SELECT
+    LEFT(emp_name,1) AS first_character,
+    TRUNC(salary) AS truncated_salary,
+    (
+        MOD(TRUNC(salary),10) +
+        MOD(TRUNC(salary/10),10) +
+        MOD(TRUNC(salary/100),10) +
+        MOD(TRUNC(salary/1000),10) +
+        MOD(TRUNC(salary/10000),10)
+    ) AS digit_sum,
+    EXTRACT(DAY FROM audit_date) AS audit_day,
+    CASE
+        WHEN (
+            MOD(TRUNC(salary),10) +
+            MOD(TRUNC(salary/10),10) +
+            MOD(TRUNC(salary/100),10) +
+            MOD(TRUNC(salary/1000),10) +
+            MOD(TRUNC(salary/10000),10)
+        ) > EXTRACT(DAY FROM audit_date)
+        THEN 'Digit Alert'
+        ELSE 'Normal'
+    END AS status
+    FROM digit_audit;
+
+| first_character | truncated_salary | digit_sum | audit_day | status      |
+| --------------- | ---------------- | --------- | --------- | ----------- |
+| A               | 70000            | 7         | 1         | Digit Alert |
+| V               | 65000            | 11        | 2         | Digit Alert |
+
+---
+**Query #21**
+
+    --11.
+    SELECT
+    LEFT(bank_code,4) AS bank_prefix,
+    TO_CHAR(credit_date,'Day') AS weekday_name,
+    ROUND(salary) AS rounded_salary,
+    MOD(CAST(ROUND(salary) AS INT),5) AS salary_mod,
+    CASE
+        WHEN TO_CHAR(credit_date,'Day') IN ('Saturday ','Sunday   ')
+             AND MOD(CAST(ROUND(salary) AS INT),5) = 0
+        THEN 'Weekend Fraud'
+        WHEN LEFT(bank_code,4) = 'HDFC'
+        THEN 'Bank Review'
+        ELSE 'Normal'
+    END AS status
+    FROM salary_credit_audit;
+
+| bank_prefix | weekday_name | rounded_salary | salary_mod | status      |
+| ----------- | ------------ | -------------- | ---------- | ----------- |
+| HDFC        | Saturday     | 75001          | 1          | Bank Review |
+| ICIC        | Monday       | 65000          | 0          | Normal      |
+| SBIN        | Sunday       | 85001          | 1          | Normal      |
+| AXIS        | Tuesday      | 70000          | 0          | Normal      |
+| HDFC        | Saturday     | 60001          | 1          | Bank Review |
+
+---
+**Query #22**
+
+    --12.
+    SELECT
+    EXTRACT(HOUR FROM credit_ts) AS credit_hour,
+    LOWER(emp_name) AS employee_name,
+    FLOOR(salary) AS floor_salary,
+    ABS(FLOOR(salary) - EXTRACT(HOUR FROM credit_ts)) AS difference_value,
+    CASE
+        WHEN EXTRACT(HOUR FROM credit_ts) BETWEEN 0 AND 3
+        THEN 'Midnight Drift'
+        WHEN EXTRACT(HOUR FROM credit_ts) > 18
+        THEN 'After Hours'
+        ELSE 'Business Hours'
+    END AS status
+    FROM salary_time_drift;
+
+| credit_hour | employee_name | floor_salary | difference_value | status         |
+| ----------- | ------------- | ------------ | ---------------- | -------------- |
+| 23          | karthik       | 75000        | 74977            | After Hours    |
+| 9           | veena         | 65000        | 64991            | Business Hours |
+| 0           | ravi          | 85000        | 85000            | Midnight Drift |
+| 18          | anil          | 70000        | 69982            | Business Hours |
+| 2           | suresh        | 60000        | 59998            | Midnight Drift |
+
+---
+**Query #23**
+
+    --13.
+    SELECT
+    TRUNC(salary,2) AS truncated_salary,
+    ABS(ROUND(salary,2) - TRUNC(salary,2)) AS difference_value,
+    TO_CHAR(record_date,'Day') AS day_name,
+    LENGTH(emp_name) AS name_length,
+    CASE
+        WHEN ABS(ROUND(salary,2) - TRUNC(salary,2)) > 0.01
+        THEN 'Precision Loss'
+        ELSE 'Safe'
+    END AS status
+    FROM salary_precision;
+
+| truncated_salary | difference_value | day_name  | name_length | status |
+| ---------------- | ---------------- | --------- | ----------- | ------ |
+| 75000.75         | 0.01             | Wednesday | 7           | Safe   |
+| 65000.40         | 0.00             | Thursday  | 5           | Safe   |
+| 85000.90         | 0.01             | Friday    | 4           | Safe   |
+| 70000.10         | 0.00             | Saturday  | 4           | Safe   |
+| 60000.55         | 0.01             | Sunday    | 6           | Safe   |
+
+---
+**Query #24**
+
+    --14.
+    SELECT
+    EXTRACT(YEAR FROM AGE(CURRENT_DATE,last_hike)) AS years_since_hike,
+    POWER(growth_rate,EXTRACT(YEAR FROM AGE(CURRENT_DATE,last_hike))) AS growth_power,
+    ROUND(base_salary * POWER(growth_rate,EXTRACT(YEAR FROM AGE(CURRENT_DATE,last_hike)))) AS projected_salary,
+    UPPER(emp_name) AS employee_name,
+    CASE
+        WHEN ROUND(base_salary * POWER(growth_rate,EXTRACT(YEAR FROM AGE(CURRENT_DATE,last_hike)))) > 150000
+        THEN 'Explosive Growth'
+        WHEN ROUND(base_salary * POWER(growth_rate,EXTRACT(YEAR FROM AGE(CURRENT_DATE,last_hike)))) > 80000
+        THEN 'Controlled'
+        ELSE 'Stagnant'
+    END AS status
+    FROM salary_growth;
+
+| years_since_hike | growth_power     | projected_salary | employee_name | status           |
+| ---------------- | ---------------- | ---------------- | ------------- | ---------------- |
+| 7                | 1.71382426877952 | 128538           | KARTHIK       | Controlled       |
+| 5                | 1.2762815625     | 82959            | VEENA         | Controlled       |
+| 9                | 2.77307875745019 | 235714           | RAVI          | Explosive Growth |
+| 4                | 1.12550881       | 78786            | ANIL          | Stagnant         |
+| 6                | 1.418519112256   | 85112            | SURESH        | Controlled       |
+
+---
+**Query #25**
+
+    --15
+    SELECT
+    TRUNC(salary) AS salary_without_decimal,
+    REVERSE(CAST(TRUNC(salary) AS TEXT)) AS reversed_salary,
+    TO_CHAR(processed_date,'Day') AS weekday_name,
+    INITCAP(emp_name) AS employee_name,
+    CASE
+        WHEN CAST(TRUNC(salary) AS TEXT) = REVERSE(CAST(TRUNC(salary) AS TEXT))
+        THEN 'Symmetric Pay'
+        ELSE 'Asymmetric'
+    END AS status
+    FROM salary_symmetry;
+
+| salary_without_decimal | reversed_salary | weekday_name | employee_name | status        |
+| ---------------------- | --------------- | ------------ | ------------- | ------------- |
+| 75557                  | 75557           | Wednesday    | Karthik       | Symmetric Pay |
+| 64446                  | 64446           | Thursday     | Veena         | Symmetric Pay |
+| 85858                  | 85858           | Friday       | Ravi          | Symmetric Pay |
+| 70007                  | 70007           | Saturday     | Anil          | Symmetric Pay |
+| 60000                  | 00006           | Sunday       | Suresh        | Asymmetric    |
+
+---
+**Query #26**
+
+    --16
+    SELECT
+    EXTRACT(YEAR FROM credit_date) AS credit_year,
+    CASE
+        WHEN MOD(CAST(EXTRACT(YEAR FROM credit_date) AS INT),4) = 0
+        THEN 'Leap Year'
+        ELSE 'Non Leap Year'
+    END AS leap_check,
+    CEIL(salary) AS ceil_salary,
+    EXTRACT(DOY FROM credit_date) AS day_of_year,
+    CASE
+        WHEN EXTRACT(MONTH FROM credit_date) = 2
+             AND EXTRACT(DAY FROM credit_date) = 29
+        THEN 'Leap Credit'
+        ELSE 'Non-Leap Credit'
+    END AS status
+    FROM leap_salary;
+
+| credit_year | leap_check    | ceil_salary | day_of_year | status          |
+| ----------- | ------------- | ----------- | ----------- | --------------- |
+| 2024        | Leap Year     | 75001       | 60          | Leap Credit     |
+| 2025        | Non Leap Year | 65001       | 59          | Non-Leap Credit |
+| 2020        | Leap Year     | 85001       | 60          | Leap Credit     |
+| 2023        | Non Leap Year | 70001       | 59          | Non-Leap Credit |
+| 2024        | Leap Year     | 60001       | 59          | Non-Leap Credit |
+
+---
+**Query #27**
+
+    --17
+    SELECT
+    CASE
+        WHEN EXTRACT(MONTH FROM credit_date) >= 4
+        THEN CONCAT(EXTRACT(YEAR FROM credit_date),'-',EXTRACT(YEAR FROM credit_date)+1)
+        ELSE CONCAT(EXTRACT(YEAR FROM credit_date)-1,'-',EXTRACT(YEAR FROM credit_date))
+    END AS fiscal_year,
+    TO_CHAR(credit_date,'Month') AS month_name,
+    TO_CHAR(salary,'99,99,999.99') AS formatted_salary,
+    LOWER(emp_name) AS employee_name,
+    CASE
+        WHEN EXTRACT(MONTH FROM credit_date) = 3
+        THEN 'Year End Credit'
+        WHEN EXTRACT(MONTH FROM credit_date) = 4
+        THEN 'Year Start Credit'
+        ELSE 'Mid Year'
+    END AS status
+    FROM fiscal_salary;
+
+| fiscal_year | month_name | formatted_salary | employee_name | status            |
+| ----------- | ---------- | ---------------- | ------------- | ----------------- |
+| 2024-2025   | March      |     75,000.75    | karthik       | Year End Credit   |
+| 2025-2026   | April      |     65,000.40    | veena         | Year Start Credit |
+| 2023-2024   | March      |     85,000.90    | ravi          | Year End Credit   |
+| 2024-2025   | April      |     70,000.10    | anil          | Year Start Credit |
+| 2024-2025   | March      |     60,000.55    | suresh        | Year End Credit   |
+
+---
+**Query #28**
+
+    --18
+    SELECT
+    RANDOM() AS random_value,
+    ROUND(salary) AS rounded_salary,
+    TO_CHAR(record_date,'Day') AS day_name,
+    LEFT(emp_name,1) AS first_character,
+    CASE
+        WHEN RANDOM() > 0.7
+        THEN 'Sampled'
+        ELSE 'Skipped'
+    END AS status
+    FROM salary_sampling;
+
+| random_value        | rounded_salary | day_name  | first_character | status  |
+| ------------------- | -------------- | --------- | --------------- | ------- |
+| 0.930336187127978   | 75001          | Wednesday | K               | Skipped |
+| 0.114508141297847   | 65000          | Thursday  | V               | Skipped |
+| 0.617204307112843   | 85001          | Friday    | R               | Skipped |
+| 0.30709818797186    | 70000          | Saturday  | A               | Skipped |
+| 0.995499382261187   | 60001          | Sunday    | S               | Skipped |
+| 0.0751049709506333  | 72001          | Monday    | A               | Skipped |
+| 0.00278225122019649 | 68001          | Tuesday   | N               | Skipped |
+
+---
+**Query #29**
+
+    --19
+    SELECT
+    ASCII(LEFT(emp_name,1)) AS ascii_value,
+    EXTRACT(YEAR FROM AGE(CURRENT_DATE,join_date)) AS years_since_joining,
+    FLOOR(salary) AS floor_salary,
+    ABS(ASCII(LEFT(emp_name,1)) - EXTRACT(YEAR FROM AGE(CURRENT_DATE,join_date))) AS difference_value,
+    CASE
+        WHEN ASCII(LEFT(emp_name,1)) > EXTRACT(YEAR FROM AGE(CURRENT_DATE,join_date))
+        THEN 'Name Dominates'
+        ELSE 'Experience Dominates'
+    END AS status
+    FROM salary_ascii;
+
+| ascii_value | years_since_joining | floor_salary | difference_value | status         |
+| ----------- | ------------------- | ------------ | ---------------- | -------------- |
+| 75          | 7                   | 75000        | 68               | Name Dominates |
+| 86          | 4                   | 65000        | 82               | Name Dominates |
+| 82          | 10                  | 85000        | 72               | Name Dominates |
+| 65          | 5                   | 70000        | 60               | Name Dominates |
+| 83          | 3                   | 60000        | 80               | Name Dominates |
+
+---
+**Query #30**
+
+    --20
+    SELECT
+    EXTRACT(DAY FROM credit_date) AS day_value,
+    EXTRACT(MONTH FROM credit_date) AS month_value,
+    RIGHT(CAST(TRUNC(salary) AS TEXT),2) AS last_two_digits,
+    UPPER(emp_name) AS employee_name,
+    ABS(
+    CAST(EXTRACT(DAY FROM credit_date) AS INT) -
+    CAST(EXTRACT(MONTH FROM credit_date) AS INT)
+    ) AS difference_value,
+    CASE
+        WHEN EXTRACT(DAY FROM credit_date) = EXTRACT(MONTH FROM credit_date)
+             OR RIGHT(CAST(TRUNC(salary) AS TEXT),2) =
+                LPAD(CAST(EXTRACT(MONTH FROM credit_date) AS TEXT),2,'0')
+        THEN 'Calendar Match'
+        ELSE 'Calendar Drift'
+    END AS status
+    FROM salary_calendar;
+
+| day_value | month_value | last_two_digits | employee_name | difference_value | status         |
+| --------- | ----------- | --------------- | ------------- | ---------------- | -------------- |
+| 15        | 1           | 00              | KARTHIK       | 14               | Calendar Drift |
+| 14        | 2           | 00              | VEENA         | 12               | Calendar Drift |
+| 31        | 3           | 00              | RAVI          | 28               | Calendar Drift |
+| 4         | 4           | 00              | ANIL          | 0                | Calendar Match |
+| 5         | 5           | 00              | SURESH        | 0                | Calendar Match |
+
+---
+**Query #31**
+
+    --L-2
+    --1.
+    SELECT
+    INITCAP(emp_name) AS employee_name,
+    CASE
+        WHEN TO_CHAR(login_time,'Day') IN ('Saturday ','Sunday   ')
+        THEN 'Weekend'
+        ELSE 'Weekday'
+    END AS day_type,
+    ROUND(CAST(EXTRACT(EPOCH FROM (logout_time - login_time))/3600 AS NUMERIC),2) AS working_hours,
+    CASE
+        WHEN TO_CHAR(login_time,'Day') NOT IN ('Saturday ','Sunday   ')
+             AND ROUND(CAST(EXTRACT(EPOCH FROM (logout_time - login_time))/3600 AS NUMERIC),2) >= 8
+        THEN 'Good Performer'
+        WHEN TO_CHAR(login_time,'Day') NOT IN ('Saturday ','Sunday   ')
+             AND ROUND(CAST(EXTRACT(EPOCH FROM (logout_time - login_time))/3600 AS NUMERIC),2) < 6
+        THEN 'Bad Performer'
+        ELSE 'Weekend Login'
+    END AS status
+    FROM employee_login;
+
+| employee_name | day_type | working_hours | status         |
+| ------------- | -------- | ------------- | -------------- |
+| Karthik       | Weekday  | 9.08          | Good Performer |
+| Veena         | Weekday  | 5.50          | Bad Performer  |
+| Ravi          | Weekday  | 11.00         | Good Performer |
+| Anil          | Weekend  | 3.00          | Weekend Login  |
+| Suresh        | Weekend  | 7.75          | Weekend Login  |
+
+---
+**Query #32**
+
+    --2
+    SELECT
+    UPPER(emp_name) AS employee_name,
+    CASE
+        WHEN login_date >= CURRENT_DATE - INTERVAL '7 days'
+        THEN 'Last 7 Days'
+        ELSE 'Old Record'
+    END AS record_status,
+    CASE
+        WHEN TO_CHAR(login_date,'Day') IN ('Saturday ','Sunday   ')
+        THEN 'Weekend'
+        ELSE 'Weekday'
+    END AS day_type,
+    ROUND(CAST(EXTRACT(EPOCH FROM (logout_time - login_time))/3600 AS NUMERIC),2) AS working_hours,
+    CASE
+        WHEN login_date >= CURRENT_DATE - INTERVAL '7 days'
+             AND ROUND(CAST(EXTRACT(EPOCH FROM (logout_time - login_time))/3600 AS NUMERIC),2) >= 8
+        THEN 'Active & Productive'
+        WHEN login_date >= CURRENT_DATE - INTERVAL '7 days'
+             AND ROUND(CAST(EXTRACT(EPOCH FROM (logout_time - login_time))/3600 AS NUMERIC),2) < 8
+        THEN 'Active but Low Hours'
+        ELSE 'Absent from Last 7 Days'
+    END AS status
+    FROM attendance_log;
+
+| employee_name | record_status | day_type | working_hours | status                  |
+| ------------- | ------------- | -------- | ------------- | ----------------------- |
+| KARTHIK       | Old Record    | Weekday  | 9.00          | Absent from Last 7 Days |
+| KARTHIK       | Old Record    | Weekday  | 8.25          | Absent from Last 7 Days |
+| VEENA         | Old Record    | Weekend  | 5.00          | Absent from Last 7 Days |
+| RAVI          | Old Record    | Weekday  | 10.00         | Absent from Last 7 Days |
+| ANIL          | Old Record    | Weekday  | 3.00          | Absent from Last 7 Days |
+
+---
+**Query #33**
+
+    --3
+    SELECT
+    TO_CHAR(work_date,'Day') AS day_name,
+    LOWER(emp_name) AS employee_name,
+    CEIL(EXTRACT(EPOCH FROM (logout_time - login_time))/3600) AS working_hours,
+    CASE
+        WHEN TO_CHAR(work_date,'Day') IN ('Saturday ','Sunday   ')
+             AND CEIL(EXTRACT(EPOCH FROM (logout_time - login_time))/3600) >= 8
+        THEN 'Weekend Overtime'
+        WHEN TO_CHAR(work_date,'Day') IN ('Saturday ','Sunday   ')
+             AND CEIL(EXTRACT(EPOCH FROM (logout_time - login_time))/3600) < 4
+        THEN 'Suspicious Login'
+        ELSE 'Normal Working Day'
+    END AS status
+    FROM weekend_monitor;
+
+| day_name  | employee_name | working_hours | status             |
+| --------- | ------------- | ------------- | ------------------ |
+| Saturday  | ravi          | 12            | Weekend Overtime   |
+| Sunday    | veena         | 3             | Suspicious Login   |
+| Friday    | karthik       | 9             | Normal Working Day |
+| Thursday  | anil          | 3             | Normal Working Day |
+
+---
+**Query #34**
+
+    --4
+    SELECT
+    EXTRACT(HOUR FROM login_datetime) AS login_hour,
+    TRUNC(CAST(EXTRACT(EPOCH FROM (logout_datetime - login_datetime))/3600 AS NUMERIC),1) AS working_hours,
+    TO_CHAR(login_datetime,'Day') AS weekday_name,
+    CASE
+        WHEN TO_CHAR(login_datetime,'Day') NOT IN ('Saturday ','Sunday   ')
+             AND EXTRACT(HOUR FROM login_datetime) < 9
+             AND TRUNC(CAST(EXTRACT(EPOCH FROM (logout_datetime - login_datetime))/3600 AS NUMERIC),1) >= 8
+        THEN 'Disciplined'
+        WHEN TO_CHAR(login_datetime,'Day') NOT IN ('Saturday ','Sunday   ')
+             AND EXTRACT(HOUR FROM login_datetime) > 10
+        THEN 'Late Comer'
+        ELSE 'Poor Discipline'
+    END AS status
+    FROM login_discipline;
+
+| login_hour | working_hours | weekday_name | status          |
+| ---------- | ------------- | ------------ | --------------- |
+| 8          | 9.2           | Wednesday    | Disciplined     |
+| 10         | 5.2           | Wednesday    | Poor Discipline |
+| 9          | 11.5          | Wednesday    | Poor Discipline |
+| 11         | 2.5           | Wednesday    | Late Comer      |
+
+---
+**Query #35**
+
+    --5
+    SELECT
+    CASE
+        WHEN work_date >= CURRENT_DATE - INTERVAL '7 days'
+        THEN 'Recent'
+        ELSE 'Old'
+    END AS record_type,
+    CASE
+        WHEN TO_CHAR(work_date,'Day') IN ('Saturday ','Sunday   ')
+        THEN 'Weekend'
+        ELSE 'Weekday'
+    END AS day_type,
+    FLOOR(EXTRACT(EPOCH FROM (logout_time - login_time))/3600) AS working_hours,
+    CASE
+        WHEN work_date >= CURRENT_DATE - INTERVAL '7 days'
+             AND TO_CHAR(work_date,'Day') NOT IN ('Saturday ','Sunday   ')
+             AND FLOOR(EXTRACT(EPOCH FROM (logout_time - login_time))/3600) >= 8
+        THEN 'Consistent Performer'
+        WHEN FLOOR(EXTRACT(EPOCH FROM (logout_time - login_time))/3600) < 6
+        THEN 'Irregular Performer'
+        ELSE 'Absent / Old Record'
+    END AS status
+    FROM performance_tracker;
+
+| record_type | day_type | working_hours | status              |
+| ----------- | -------- | ------------- | ------------------- |
+| Old         | Weekday  | 9             | Absent / Old Record |
+| Old         | Weekday  | 8             | Absent / Old Record |
+| Old         | Weekend  | 5             | Irregular Performer |
+| Old         | Weekday  | 10            | Absent / Old Record |
+| Old         | Weekday  | 3             | Irregular Performer |
+
+---
+
+[View on DB Fiddle](https://www.db-fiddle.com/f/cpS8hfR3jHyvRKhUeyrxgY/0)
