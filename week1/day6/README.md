@@ -1,8 +1,8 @@
-# Week 1 - Day 5: SQL Window Functions and CTE Practice
+# Week 1 - Day 6: SQL Window Functions and CTE Practice
 
 ## 📌 Overview
 
-On Day 5, I practiced advanced SQL analytical concepts using Window Functions and Common Table Expressions (CTEs). The focus of today's work was understanding ranking functions, recursive queries, running calculations, and analytical reporting using PostgreSQL.
+On Day 6,I have completyed all the remaining baisic questions and I practiced advanced SQL analytical concepts using Window Functions and Common Table Expressions (CTEs). The focus of today's work was understanding ranking functions, recursive queries, running calculations, and analytical reporting using PostgreSQL.
 
 ## 🛠️ Tools Used
 
@@ -53,5 +53,5 @@ https://www.db-fiddle.com/f/qgwTbHHXNvcKj1GC2uZ1p9/4
 
 ## 🚀 Conclusion
 
-Day 5 helped me improve my understanding of advanced SQL analytical concepts and gave me practical experience with Window Functions, recursive CTEs, and reporting queries using PostgreSQL.
+Day 6 helped me improve my understanding of advanced SQL analytical concepts and gave me practical experience with Window Functions, recursive CTEs, and reporting queries using PostgreSQL.
 
