@@ -172,6 +172,6 @@ This platform was used for:
 
 # 🚀 Conclusion
 
-Week 1 I have learnt all the basics that are required. and build a strong foundation in SQL and database concepts. Through continuous practice and hands-on assignments, I improved my understanding of query writing, relational databases, joins, analytical SQL functions, and reporting techniques. This repository documents my learning progress and practical SQL exercises completed during the training program.
+Week 1 I have learnt all the basics that are required. and build a strong foundation in SQL and database concepts. Through continuous practice and hands-on assignments, I improved my understanding of query writing, relational databases, joins, analytical SQL functions, and reporting techniques. Some advanced topics like Window Functions and CTEs were introduced earlier through assignments provided during the training sessions. Even though these topics are officially planned for later weeks, I practiced them initially to improve my understanding of SQL concepts and strengthen my overall query-writing skills through hands-on practice. This repository documents my learning progress and practical SQL exercises completed during the training program.
 
 
